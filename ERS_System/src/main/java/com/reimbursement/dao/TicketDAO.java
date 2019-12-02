@@ -10,16 +10,16 @@ import java.util.ArrayList;
 import com.reimbursement.model.*;
 
 public class TicketDAO implements TicketDAOInterface {
-	private static String db_url = "jdbc:oracle:thin:@db1028.cspirgmhfavi.us-east-2.rds.amazonaws.com:1521:orcl";
-	private static String db_username = "Customers";
-	private static String db_password = "p4ssw0rd";
+	private static String db_url = "";
+	private static String db_username = "";
+	private static String db_password = "";
 	
 
 	@Override
 	public void insertTicket(ERS_Ticket x) {
 		
 		try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password)) {
-			PreparedStatement ps = conn.prepareStatement("INSERT INTO tickets VALUES(?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement ps = conn.prepareStatement("INSERT INTO ERS_REIMBURSEMENT VALUES(?,?,?,?,?,?,?,?,?,?)");
 			
 			ps.setInt(1,x.getTicket_Id());
 			ps.setInt(2,x.getAmount());
@@ -46,7 +46,7 @@ public class TicketDAO implements TicketDAOInterface {
 		ERS_Ticket tick = null;
 		try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password)) {
 
-			PreparedStatement ps = conn.prepareStatement("SELECT * FROM customers WHERE ticket_id=?");
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT WHERE REIMB_ID=?");
 			ps.setInt(1, x);
 			
 			ResultSet rs = ps.executeQuery();
@@ -76,7 +76,7 @@ public class TicketDAO implements TicketDAOInterface {
 		ArrayList<ERS_Ticket> ticketList = new ArrayList<ERS_Ticket>();
 		try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password)) {
 
-			PreparedStatement ps = conn.prepareStatement("SELECT * FROM customers");
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				ticketList.add(new ERS_Ticket(
@@ -84,7 +84,9 @@ public class TicketDAO implements TicketDAOInterface {
 						rs.getInt(2),
 						rs.getTimestamp(3),
 						rs.getTimestamp(4),
-						rs.getString(5),rs.getBlob(6),rs.getInt(7),
+						rs.getString(5),
+						rs.getBlob(6),
+						rs.getInt(7),
 						rs.getInt(8),
 						rs.getInt(9),
 						rs.getInt(10)));
@@ -102,7 +104,7 @@ public class TicketDAO implements TicketDAOInterface {
 	@Override
 	public void updateTicket(ERS_Ticket x) { 
 		try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password)) {
-			PreparedStatement ps = conn.prepareStatement("UPDATE tickets SET "
+			PreparedStatement ps = conn.prepareStatement("UPDATE ERS_REIMBURSEMENT SET "
 					+ "ticket_id=?,"
 					+ "ticket_amount=?,"
 					+ "submit_date=?"
@@ -111,7 +113,7 @@ public class TicketDAO implements TicketDAOInterface {
 					+ "receipt=?,"
 					+ "status_id=?,"
 					+ "type_id=? "
-					+ "WHERE ticket_id=? ");
+					+ "WHERE REIMB_ID=? ");
 			ps.setInt(11, x.getTicket_Id());
 			
 			ResultSet rs = ps.executeQuery();

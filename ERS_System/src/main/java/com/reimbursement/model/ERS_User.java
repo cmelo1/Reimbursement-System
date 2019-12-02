@@ -44,16 +44,16 @@ return password;
 public void setPassword(String password) {
 this.password = password;
 }
-public String getF_name() {
+public String getFname() {
 return fname;
 }
-public void setF_name(String fname) {
+public void setFname(String fname) {
 this.fname = fname;
 }
-public String getL_name() {
+public String getLname() {
 return lname;
 }
-public void setL_name(String lname) {
+public void setLname(String lname) {
 this.lname = lname;
 }
 public String getEmail() {
