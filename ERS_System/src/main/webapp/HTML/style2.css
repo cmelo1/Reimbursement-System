@@ -90,10 +90,10 @@
 }
 body {
   background: #F84600; /* fallback for old browsers */
-  background: -webkit-linear-gradient(right, ##F84600, #F84600);
-  background: -moz-linear-gradient(right, #F84600, #F84600);
-  background: -o-linear-gradient(right, #F84600, #F84600);
-  background: linear-gradient(to left, #F84600, blue);
+  background: -webkit-linear-gradient(left, #F84600, gray);
+  background: -moz-linear-gradient(left, #F84600, gray);
+  background: -o-linear-gradient(left, #F84600, gray);
+  background: linear-gradient(to left, #F84600, gray);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
