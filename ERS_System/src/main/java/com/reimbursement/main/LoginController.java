@@ -14,6 +14,7 @@ public class LoginController {
 		String password = request.getParameter("password");
 		ERS_User newUser = new ERS_User();
 		newUser = user.selectUser(username);
+			
 			if(username.equals(newUser.getUsername()) && password.equals(newUser.getPassword())) {
 				if(newUser.getRole_id() == 1000) { //employee ID number
 					request.getSession().setAttribute("CurrentUser", newUser); //CurrentUser will be the reference name.
@@ -23,7 +24,7 @@ public class LoginController {
 					request.getSession().setAttribute("CurrentUser", newUser); //CurrentUser will be the reference name.
 					return "/HTML/Manager.html";
 				}
-				return "/HTML/index.html"; //Return back to main screen if it doesn't work.
+				return "/HTML/index.html"; //Return back to main screen if the ROLE_ID doesnt match up..
 
 		}
 			else return

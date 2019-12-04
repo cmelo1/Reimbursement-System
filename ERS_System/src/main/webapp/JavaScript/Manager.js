@@ -18,7 +18,7 @@ function getUserInfo(){
 		}
 	}
 
-xhttp.open("GET",'http://localhost:8080/ERS_System/HTML/employee.do',true); //Sends the set values 'request' to this.
+xhttp.open("GET",'http://localhost:8080/ERS_System/HTML/Manager.do',true); //Sends the set values 'request' to this.
 xhttp.send();
 }
 
@@ -26,6 +26,4 @@ function setValues(user){
 	document.getElementById("username").innerHTML = "User's username is" + user.username; 
 	document.getElementById("password").innerHTML = "User's password is" + user.password;
 	
-	
-	
-} //this will manipulate the elements on the next page.
+}

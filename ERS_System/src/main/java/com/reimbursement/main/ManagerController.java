@@ -9,15 +9,15 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.reimbursement.model.ERS_User;
 
-public class EmployeeController {
+public class ManagerController {
 	
-	public static String Home(HttpServletRequest request, HttpServletResponse response) {
+public static String Home(HttpServletRequest request, HttpServletResponse response) {
 		
-		ERS_User EmployeeUser = (ERS_User)request.getSession().getAttribute("CurrentUser");
+		ERS_User ManagerUser = (ERS_User)request.getSession().getAttribute("CurrentUser");
 		//Marshalling tool - the idea of converting an object into a data format 
 		//in our case - User to JSON (Jackson)
 		try {
-			response.getWriter().write(new ObjectMapper().writeValueAsString(EmployeeUser));
+			response.getWriter().write(new ObjectMapper().writeValueAsString(ManagerUser));
 		} catch (JsonProcessingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

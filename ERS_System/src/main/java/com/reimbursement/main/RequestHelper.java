@@ -13,10 +13,14 @@ public class RequestHelper {
 		switch (request.getRequestURI()) {
 		case "/ERS_System/HTML/index.do": 
 			return LoginController.login(request);
-
+			
 		case "/ERS_System/HTML/employee.do"://recently changed
-			return EmployeeController.Home(request, response); // Home is where they should go if the login works.
-		
+			return EmployeeController.Home(request, response); 
+			
+		case "/ERS_System/HTML/Manager.do":
+			return ManagerController.Home(request,response);
+			
+			
 		default:
 			return "/HTML/index.html";
 		}
