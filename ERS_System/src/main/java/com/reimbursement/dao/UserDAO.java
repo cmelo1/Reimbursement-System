@@ -12,9 +12,18 @@ public class UserDAO implements UserDAOInterface {
 	// URL/username/password Subject to change until we figure out a proper
 	// Database.
 
-	private static String db_url = "";
-	private static String db_username = "";
-	private static String db_password = "";
+    static{ //Static block places by her.
+           try {
+               Class.forName("oracle.jdbc.driver.OracleDriver");
+           } catch (ClassNotFoundException e) {
+               e.printStackTrace();
+           }
+       }
+    
+    
+	private static String db_url = "jdbc:oracle:thin:@db1028.cspirgmhfavi.us-east-2.rds.amazonaws.com:1521:orcl";
+	private static String db_username = "caio";
+	private static String db_password = "p4ssw0rd";
 
 	public ArrayList<ERS_User> selectAllUsers() {// returns arrayList
 		ArrayList<ERS_User> userList = new ArrayList<ERS_User>();
@@ -50,9 +59,9 @@ public class UserDAO implements UserDAOInterface {
 			// ResultSet is the object.
 
 			while (rs.next()) {
-				cust = new ERS_User(rs.getInt("user_id"), rs.getString("username"), // Whatever the column names may be.
-						rs.getString("password"), rs.getString("f_name"), rs.getString("l_name"), rs.getString("email"),
-						rs.getInt("role_id"));
+				cust = new ERS_User(rs.getInt(1), rs.getString(2), // Whatever the column names may be.
+						rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6),
+						rs.getInt(7));
 				return cust;
 			}
 

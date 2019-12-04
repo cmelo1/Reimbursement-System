@@ -68,6 +68,11 @@ return role_id;
 public void setRole_id(int role_id) {
 this.role_id = role_id;
 }
+@Override
+public String toString() {
+	return "ERS_User [user_id=" + user_id + ", username=" + username + ", fname=" + fname
+			+ ", lname=" + lname + ", email=" + email + ", role_id=" + role_id + "]";
+}
 
 
 }
