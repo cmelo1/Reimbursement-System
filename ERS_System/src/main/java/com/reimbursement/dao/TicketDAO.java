@@ -19,7 +19,7 @@ public class TicketDAO implements TicketDAOInterface {
 	public void insertTicket(ERS_Ticket x) {
 		
 		try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password)) {
-			PreparedStatement ps = conn.prepareStatement("INSERT INTO ERS_REIMBURSEMENT VALUES(?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement ps = conn.prepareStatement("INSERT INTO ERS_REIMBURSEMENT VALUES(REIMB_SEQUENCE.nextval,?,?,?,?,?,?,?,?,?)");
 			
 			ps.setInt(1,x.getTicket_Id());
 			ps.setInt(2,x.getAmount());
@@ -104,8 +104,8 @@ public class TicketDAO implements TicketDAOInterface {
 		ArrayList<ERS_Ticket> ticketList = new ArrayList<ERS_Ticket>();
 		try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password)) {
 
-			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT WHERE AUTHOR=?");
-			ps.setInt(1,x.getUser_id() );
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT WHERE ERS_USER_ID=?");
+			ps.setInt(1,x.getUser_id());
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				ticketList.add(new ERS_Ticket(
