@@ -16,8 +16,8 @@ public class RequestHelper {
 		//case "/Reimbursement_System_ERS_System/Register.do":
 		//return RegisterController.Register(request);
 		
-		case "/ERS_System/home.do":
-		return HomeController.Home(request, response); //Home is where they should go if the login works.
+		case "/ERS_System/employee.do":
+		return EmployeeController.Home(request, response); //Home is where they should go if the login works.
 		
 		default:
 			return "/HTML/index2.html";

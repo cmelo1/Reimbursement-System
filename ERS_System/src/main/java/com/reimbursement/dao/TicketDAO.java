@@ -99,6 +99,35 @@ public class TicketDAO implements TicketDAOInterface {
 		
 
 	}
+	
+	public ArrayList<ERS_Ticket> selectByEmployee(ERS_User x) { //working on it 
+		ArrayList<ERS_Ticket> ticketList = new ArrayList<ERS_Ticket>();
+		try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password)) {
+
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT WHERE AUTHOR=?");
+			ps.setInt(1,x.getUser_id() );
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				ticketList.add(new ERS_Ticket(
+						rs.getInt(1),
+						rs.getInt(2),
+						rs.getTimestamp(3),
+						rs.getTimestamp(4),
+						rs.getString(5),
+						rs.getBlob(6),
+						rs.getInt(7),
+						rs.getInt(8),
+						rs.getInt(9),
+						rs.getInt(10)));
+			}
+		} catch (SQLException e) {
+			System.out.println("Connection Failed!");
+			e.printStackTrace();
+		}
+		return ticketList;
+		
+
+	}
 
 
 	@Override

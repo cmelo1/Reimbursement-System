@@ -15,10 +15,18 @@ public class LoginController {
 		ERS_User newUser = new ERS_User();
 		newUser = user.selectUser(username);
 			if(username.equals(newUser.getUsername()) && password.equals(newUser.getPassword())) {
-			request.getSession().setAttribute("CurrentUser", newUser); //CurrentUser will be the reference name.
-			return "/HTML/home.html";
+				if(newUser.getRole_id() == 1000) { //employee ID number
+					request.getSession().setAttribute("CurrentUser", newUser); //CurrentUser will be the reference name.
+					return "/HTML/employee.html";
+				}
+				else if(newUser.getRole_id() == 1100) { //Boss ID number
+					request.getSession().setAttribute("CurrentUser", newUser); //CurrentUser will be the reference name.
+					return "/HTML/boss.html";
+				}
+				return "/HTML/index2.html"; //Return back to main screen if it doesn't work.
+
 		}
-			else return //"/HTML/home.html";
+			else return
 					"/HTML/index2.html";
 		
 	}
