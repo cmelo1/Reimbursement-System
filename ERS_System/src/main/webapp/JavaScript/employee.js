@@ -1,15 +1,17 @@
 /**
  * 
  */
-
+console.log("above onload function");
 window.onload = function(){
 	getUserInfo();
-	
+	console.log("inside online function");
 }
 
 function getUserInfo(){
 	let xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
+		console.log(xhttp.readystate);
+		console.log(xhttp.status);
 		if(xhttp.readystate == 4 && xhttp.status == 200){
 			let user = JSON.parse(xhttp.responsiveText);
 			setValues(user); //Call set values function defined below

@@ -21,7 +21,7 @@ public class LoginController {
 				}
 				else if(newUser.getRole_id() == 1100) { //Boss ID number
 					request.getSession().setAttribute("CurrentUser", newUser); //CurrentUser will be the reference name.
-					return "/HTML/boss.html";
+					return "/HTML/manager.html";
 				}
 				return "/HTML/index2.html"; //Return back to main screen if it doesn't work.
 
