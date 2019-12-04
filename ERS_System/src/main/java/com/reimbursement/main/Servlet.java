@@ -19,7 +19,7 @@ public class Servlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		doGet(request, response);
+		//doGet(request, response);
 		String targetURL = RequestHelper.process(request, response);
 		request.getRequestDispatcher(targetURL).forward(request, response);
 		//Chose to respond with a forward for every POST request.

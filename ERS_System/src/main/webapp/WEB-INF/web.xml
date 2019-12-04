@@ -11,7 +11,6 @@
   </welcome-file-list>
   <servlet>
     <description></description>
-    <display-name>Servlet</display-name>
     <servlet-name>Servlet</servlet-name>
     <servlet-class>com.reimbursement.main.Servlet</servlet-class>
   </servlet>
