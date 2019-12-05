@@ -93,13 +93,54 @@ h2 {
 	width: 33.33%
 }
 
+#tablebody tr:hover{
+          background-color: #56baed;
+	}
+	
+/** Border stuff **/
+#tablebody{
+	box-shadow: 10px 10px gray;
+	padding: 10px;
+	text-align: center !important;
+}
+table.bottomBorder{
+	border-collapse: collapse;
+}	
+
+th, td ,tr{ 
+  border-bottom: 1px solid black !important;
+  border-weight: 5px;
+
+ 
+
+}
+
+td{
+	
+  border-bottom: 1px solid #ddd;
+
+}
+
+table.bottomBorder td,
+table.bottomBorder th{
+	border-bottom: 10px;
+	border-color: red;
+	padding: 10px;
+}
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 0px;
+    border-color: grey;
+    border-radius:
+}
 .currentTickets{
 	float: left;
 	padding: 15px;
 	border: 1px solid black;
 	border-spacing: 25px;
 	background-color: #dadada;
-	width: 66.66%
+	width: 66.66%;
 }
 
 .row::after{
