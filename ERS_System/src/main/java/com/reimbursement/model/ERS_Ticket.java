@@ -10,7 +10,7 @@ public class ERS_Ticket {
 	 * 
 	 */
 private int ticket_id;
-private int amount;
+private double ticket_amount;
 private Timestamp submit_date; //getters/setters might have to convert between SQL time if its different.
 private Timestamp resolve_date;
 private String	description;
@@ -21,11 +21,11 @@ private int status_id;
 private int type_id;
 
 public ERS_Ticket() {}
-public ERS_Ticket(int id,int amount,Timestamp resolve_date,Timestamp submit_date, //SQL constructor
+public ERS_Ticket(int id,double amount,Timestamp resolve_date,Timestamp submit_date, //SQL constructor
 		String description,Blob receipt,int author,int resolver ,int status_id,int type_id) {
 	
 	this.ticket_id = id;
-	this.amount=amount;
+	this.ticket_amount=amount;
 	this.submit_date = submit_date;
 	this.resolve_date = resolve_date;
 	this.description = description;
@@ -44,11 +44,11 @@ public int getTicket_Id() {
 public void setTicket_id(int id) {
 	this.ticket_id = id;
 }
-public int getAmount() {
-	return amount;
+public double getAmount() {
+	return ticket_amount;
 }
 public void setAmount(int amount) {
-	this.amount = amount;
+	this.ticket_amount = amount;
 }
 public Timestamp getSubmit_date() {
 	return submit_date;

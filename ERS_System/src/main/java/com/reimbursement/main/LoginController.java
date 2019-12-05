@@ -16,11 +16,11 @@ public class LoginController {
 		newUser = user.selectUser(username);
 			
 			if(username.equals(newUser.getUsername()) && password.equals(newUser.getPassword())) {
-				if(newUser.getRole_id() == 1000) { //employee ID number
+				if(newUser.getRole_id() == 5000) { //employee ID number
 					request.getSession().setAttribute("CurrentUser", newUser); //CurrentUser will be the reference name.
 					return "/HTML/employee.html";
 				}
-				else if(newUser.getRole_id() == 1100) { //Boss ID number
+				else if(newUser.getRole_id() == 5100) { //Boss ID number
 					request.getSession().setAttribute("CurrentUser", newUser); //CurrentUser will be the reference name.
 					return "/HTML/Manager.html";
 				}

@@ -19,6 +19,12 @@ public class RequestHelper {
 			
 		case "/ERS_System/HTML/Manager.do":
 			return ManagerController.Home(request,response);
+		case "/ERS_System/HTML/submitTicket.do":
+			//must have an action from a submit button to a form as action="submitTicket.do"
+			return TicketController.submitTicket(request);
+		case "/ERS_System/HTML/displayTickets.do":
+			return TicketController.displayTickets(request,response);
+			
 			
 			
 		default:

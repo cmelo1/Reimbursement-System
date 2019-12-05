@@ -22,7 +22,7 @@ public class UserDAO implements UserDAOInterface {
     
     
 	private static String db_url = "jdbc:oracle:thin:@db1028.cspirgmhfavi.us-east-2.rds.amazonaws.com:1521:orcl";
-	private static String db_username = "caio";
+	private static String db_username = "CDD";
 	private static String db_password = "p4ssw0rd";
 
 	public ArrayList<ERS_User> selectAllUsers() {// returns arrayList

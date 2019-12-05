@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import com.reimbursement.model.*;
 
 public class TicketDAO implements TicketDAOInterface {
-	private static String db_url = "";
-	private static String db_username = "";
-	private static String db_password = "";
+	private static String db_url = "jdbc:oracle:thin:@db1028.cspirgmhfavi.us-east-2.rds.amazonaws.com:1521:orcl";
+	private static String db_username = "CDD";
+	private static String db_password = "p4ssw0rd";
 	
 
 	@Override
@@ -21,8 +21,8 @@ public class TicketDAO implements TicketDAOInterface {
 		try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password)) {
 			PreparedStatement ps = conn.prepareStatement("INSERT INTO ERS_REIMBURSEMENT VALUES(REIMB_SEQUENCE.nextval,?,?,?,?,?,?,?,?,?)");
 			
-			ps.setInt(1,x.getTicket_Id());
-			ps.setInt(2,x.getAmount());
+			//ps.setInt(1,x.getTicket_Id()); Replaced by sequence above
+			ps.setDouble(2,x.getAmount());
 			ps.setTimestamp(3,x.getSubmit_date());
 			ps.setTimestamp(4,x.getResolve_date());
 			ps.setString(5,x.getDescription());
@@ -143,20 +143,21 @@ public class TicketDAO implements TicketDAOInterface {
 					+ "status_id=?,"
 					+ "type_id=? "
 					+ "WHERE REIMB_ID=? ");
-			ps.setInt(11, x.getTicket_Id());
 			
-			ResultSet rs = ps.executeQuery();
+			ps.setInt(11, x.getTicket_Id());
+			ps.setInt(1,x.getTicket_Id());
+			ps.setDouble(2,x.getAmount());
+			ps.setTimestamp(3,x.getSubmit_date());
+			ps.setTimestamp(4,x.getResolve_date());
+			ps.setString(5,x.getDescription());
+			ps.setBlob(6,x.getReceipt());
+			ps.setInt(7,x.getAuthor());
+			ps.setInt(8,x.getResolver());
+			ps.setInt(9,x.getStatus_id());
+			ps.setInt(10,x.getType_id());
+			
+			ps.executeQuery();
 		
-						ps.setInt(1,x.getTicket_Id());
-						ps.setInt(2,x.getAmount());
-						ps.setTimestamp(3,x.getSubmit_date());
-						ps.setTimestamp(4,x.getResolve_date());
-						ps.setString(5,x.getDescription());
-						ps.setBlob(6,x.getReceipt());
-						ps.setInt(7,x.getAuthor());
-						ps.setInt(8,x.getResolver());
-						ps.setInt(9,x.getStatus_id());
-						ps.setInt(10,x.getType_id());
 						
 		} catch (SQLException e) {
 			System.out.println("Connection Failed!");

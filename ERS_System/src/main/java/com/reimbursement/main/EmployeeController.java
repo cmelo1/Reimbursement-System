@@ -13,19 +13,20 @@ public class EmployeeController {
 	
 	public static String Home(HttpServletRequest request, HttpServletResponse response) {
 		
+		
+		//Sessions - Marshalling Tool
 		ERS_User EmployeeUser = (ERS_User)request.getSession().getAttribute("CurrentUser");
-		//Marshalling tool - the idea of converting an object into a data format 
-		//in our case - User to JSON (Jackson)
+		
 		try {
 			response.getWriter().write(new ObjectMapper().writeValueAsString(EmployeeUser));
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
+	
+	
 
 }
