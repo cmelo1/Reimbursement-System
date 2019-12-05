@@ -39,7 +39,7 @@
 						<th class="js-sort-string">Type</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody id="tablebody">
 					<tr>
 						<td>0001</td>
 						<td>$250.00</td>
@@ -106,16 +106,18 @@
 		<!-- Right Pane -->
 		<div class="newTickets">
 			<h2>Submit A New Ticket</h2>
-			<input type="text" id="typeTicket" ticket="Ticket Type" placeholder="Enter Ticket Type">
-			<br>
-			<input type="text" id="tickAmount" ticket="Ticket Amount" placeholder="Enter Ticket Price">
-			<br>
-			<textarea name="Description" id="ticketDesc">(Enter Ticket Description)</textarea>
-			<br />
-			<form>
-				Date: <input type="date" name="subDate">
+			<form class="dropDown">
+				<select>
+					<option>Food</option>
+					<option>Lodging</option>
+					<option>Travel</option>
+					<option>Other</option>
+				</select>
 			</form>
-			<input type="submit" value="Submit"/>
+			<br>
+			<textarea name="Description" id="ticketDesc" rows="4" cols="65">(Enter Ticket Description)</textarea>
+			<br>Date: <input id="autoToday" type="date" name="subDate">
+			<input type="submit" value="Submit" />
 		</div>
 	</div>
 

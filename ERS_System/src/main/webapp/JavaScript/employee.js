@@ -7,26 +7,27 @@ window.onload = function(){
 	getTicketInfo();
 }
 
-//function getUserInfo(){
-//	let xhttp = new XMLHttpRequest();
-//	xhttp.onreadystatechange = function(){
-//		console.log(xhttp.readyState);
-//		console.log(xhttp.status);
-//		if(xhttp.readyState == 4 && xhttp.status == 200){
-//			let user = JSON.parse(xhttp.responseText); //The response gets turned into this.
-//			setValues(user); //Call set values function defined below
-//		}
-//	}
-//
-//	//this goes straight to the request helper.
-//xhttp.open("GET",'http://localhost:8080/ERS_System/HTML/employee.do',true); //Sends the set values 'request' to this.
-//xhttp.send();
-//}
+function getUserInfo(){
+	let xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function(){
+		console.log(xhttp.readyState);
+		console.log(xhttp.status);
+		if(xhttp.readyState == 4 && xhttp.status == 200){
+			let user = JSON.parse(xhttp.responseText); //The response gets turned into this.
+			setValues(user); //Call set values function defined below
+		}
+	}
+
+	//this goes straight to the request helper.
+xhttp.open("GET",'http://localhost:8080/ERS_System/HTML/employee.do',true); //Sends the set values 'request' to this.
+xhttp.send();
+}
 
 
 
 
 //How to parse an array?
+
 function getTicketInfo(){ 
 	let xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function(){
@@ -62,17 +63,11 @@ function setTableValues(ticketList){
 	    +"<td>" + ticketList[i].status_id + "</td>"
 	    +"<td>" + ticketList[i].type_id + "</td>"
 	    +"</tr>" ;
-	    // Break into next row
-	    
-	    
-//	    let next = i+1;
-//	    console.log("NEXT value: "+next);
-//	    if (next%rowcount==0 && next!=ticketList.length) {
-//	      html += "</tr><tr>";
-//	    }
+
 	  }
-	  //html += "</tr>";
-	
-	  document.getElementById("tablebody").innerHTML = html;
+//	  let today = new Date().toISOString().substr(0, 10);
+//	  document.querySelector("#autoToday").value = today;
+//	
+//	  document.getElementById("tablebody").innerHTML = html;
 
 } //this will manipulate the elements on the next page.
