@@ -7,66 +7,118 @@
 <link rel="stylesheet" href="sort-table.css">
 <link rel="stylesheet" type="text/css" href="style2.css">
 </head>
+
+<!-- Grid Layout -->
+<style>
+</style>
 <body style="background: linear-gradient(to bottom, #F84600, #a0a0a0)">
-	<div id="username">Unfilled Username</div>
-	<button id="logout" type="button">Log Out</button>
-	<!--<div id="password"> Unfilled Password</div>-->
+	<div class="row">
+		<div class="col-12 topBanner">
+			<div id="username">Unfilled Username</div>
+			<button id="logout" type="button">Log Out</button>
+			<!--<div id="password"> Unfilled Password</div>-->
+		</div>
+	</div>
 	<!-- Left Pane -->
-	<div class="split currentTickets">
-		<div class="centered">
+	<div class="row">
+		<div class="currentTickets">
 			<h2>Ticket Log</h2>
 			<table class="js-sort-table" id="table1">
 				<caption>TICKETS</caption>
 				<thead>
 					<tr>
-						<th class="js-sort-asc">Type</th>
-						<th class="js-sort-number">Price</th>
-						<th>Date</th>
+						<th class="js-sort-number">Ticket #</th>
+						<th class="js-sort-number">Amount</th>
+						<th class="js-sort-date">Submission Date</th>
+						<th class="js-sort-date">Resolve Date</th>
+						<th>Description</th>
+						<th>Receipt</th>
+						<th>Employee ID #</th>
+						<th class="js-sort-number">Manager ID #</th>
 						<th class="js-sort-string">Status</th>
+						<th class="js-sort-string">Type</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td>Travel</td>
+						<td>0001</td>
 						<td>$250.00</td>
-						<td>12/1/2019</td>
+						<td>12/01/2019</td>
+						<td>12/5/2019</td>
+						<td>null</td>
+						<td>BLOB</td>
+						<td>1000</td>
+						<td>1010</td>
 						<td>Approved</td>
+						<td>Travel</td>
 					</tr>
 					<tr>
-						<td>Lodging</td>
-						<td>$100.00</td>
-						<td>11/12/2019</td>
-						<td>Pending</td>
-					</tr>
-					<tr>
-						<td>Food</td>
-						<td>$34.75</td>
-						<td>10/10/19</td>
+						<td>0023</td>
+						<td>$12.50</td>
+						<td>11/30/2019</td>
+						<td>11/31/2019</td>
+						<td>null</td>
+						<td>BLOB</td>
+						<td>1000</td>
+						<td>1015</td>
 						<td>Denied</td>
-					</tr>
-					<tr>
-						<td>Other</td>
-						<td>$23.00</td>
-						<td>11/31/19</td>
-						<td>Approved</td>
-					</tr>
-					<tr>
 						<td>Food</td>
-						<td>$50.00</td>
-						<td>12/4/2019</td>
+					</tr>
+					<tr>
+						<td>0013</td>
+						<td>$77.87</td>
+						<td>10/25/2019</td>
+						<td>null</td>
+						<td>null</td>
+						<td>BLOB</td>
+						<td>1000</td>
+						<td>1017</td>
+						<td>Pending</td>
+						<td>Lodging</td>
+					</tr>
+					<tr>
+						<td>0156</td>
+						<td>$20.00</td>
+						<td>11/14/2019</td>
+						<td>11/22/2019</td>
+						<td>null</td>
+						<td>BLOB</td>
+						<td>1000</td>
+						<td>1738</td>
 						<td>Approved</td>
+						<td>Other</td>
+					</tr>
+					<tr>
+						<td>0088</td>
+						<td>$55.17</td>
+						<td>10/19/2019</td>
+						<td>10/31/2019</td>
+						<td>null</td>
+						<td>BLOB</td>
+						<td>1000</td>
+						<td>4444</td>
+						<td>Denied</td>
+						<td>Food</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
-	</div>
-	<!-- Right Pane -->
-	<div class="split newTickets">
-		<div class="centered">
-			<h2>New Tickets Pane</h2>
-			<p>Open New Tickets Preview</p>
+		<!-- Right Pane -->
+		<div class="newTickets">
+			<h2>Submit A New Ticket</h2>
+			<input type="text" id="typeTicket" ticket="Ticket Type" placeholder="Enter Ticket Type">
+			<br>
+			<input type="text" id="tickAmount" ticket="Ticket Amount" placeholder="Enter Ticket Price">
+			<br>
+			<textarea name="Description" id="ticketDesc">(Enter Ticket Description)</textarea>
+			<br />
+			<form>
+				Date: <input type="date" name="subDate">
+			</form>
+			<input type="submit" value="Submit"/>
 		</div>
 	</div>
+
 	<script type="text/javascript" src="../JavaScript/employee.js"></script>
 	<script type="text/javascript" src="../JavaScript/sort-table.js"></script>
 </body>
