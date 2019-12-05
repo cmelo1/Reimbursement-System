@@ -25,7 +25,4 @@ xhttp.send();
 function setValues(user){
 	document.getElementById("username").innerHTML = "User's username is" + user.username; 
 	document.getElementById("password").innerHTML = "User's password is" + user.password;
-	
-	
-	
 } //this will manipulate the elements on the next page.
