@@ -20,22 +20,22 @@ public class TicketDAO implements TicketDAOInterface {
 		
 		try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password)) {
 			PreparedStatement ps = conn.prepareStatement("INSERT INTO ERS_REIMBURSEMENT VALUES(REIMB_SEQUENCE.nextval,?,?,?,?,?,?,?,?,?)");
-			
-			//ps.setInt(1,x.getTicket_Id()); Replaced by sequence above
-			ps.setDouble(2,x.getAmount());
-			ps.setTimestamp(3,x.getSubmit_date());
-			ps.setTimestamp(4,x.getResolve_date());
-			ps.setString(5,x.getDescription());
-			ps.setBlob(6,x.getReceipt());
-			ps.setInt(7,x.getAuthor());
-			ps.setInt(8,x.getResolver());
-			ps.setInt(9,x.getStatus_id());
-			ps.setInt(10,x.getType_id());
+			ps.setDouble(1,x.getAmount());
+			ps.setTimestamp(2,x.getSubmit_date());
+			ps.setTimestamp(3,x.getResolve_date());
+			ps.setString(4,x.getDescription());
+			ps.setBlob(5,x.getReceipt());
+			ps.setInt(6,x.getAuthor());
+			ps.setInt(7,x.getResolver());
+			ps.setInt(8,x.getStatus_id());
+			ps.setInt(9,x.getType_id());
 			
 			ps.executeUpdate();
+			
+			System.out.println("Success!");
 
 		} catch (SQLException e) {
-			System.out.println("Connection Failed!");
+			System.out.println("Connection Failed! InsertTicket");
 			e.printStackTrace();
 		}
 
@@ -64,7 +64,7 @@ public class TicketDAO implements TicketDAOInterface {
 						rs.getInt(10));
 			}
 		} catch (SQLException e) {
-			System.out.println("Connection Failed!");
+			System.out.println("Connection Failed! SelectTicket");
 			e.printStackTrace();
 		}
 		return tick;
@@ -92,7 +92,7 @@ public class TicketDAO implements TicketDAOInterface {
 						rs.getInt(10)));
 			}
 		} catch (SQLException e) {
-			System.out.println("Connection Failed!");
+			System.out.println("Connection Failed! Select All ticket");
 			e.printStackTrace();
 		}
 		return ticketList;
@@ -100,11 +100,11 @@ public class TicketDAO implements TicketDAOInterface {
 
 	}
 	
-	public ArrayList<ERS_Ticket> selectByEmployee(ERS_User x) { //working on it 
+	public ERS_Ticket[] selectByEmployee(ERS_User x) { 
 		ArrayList<ERS_Ticket> ticketList = new ArrayList<ERS_Ticket>();
 		try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password)) {
 
-			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT WHERE ERS_USER_ID=?");
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT WHERE REIMB_AUTHOR=?");
 			ps.setInt(1,x.getUser_id());
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
@@ -121,12 +121,14 @@ public class TicketDAO implements TicketDAOInterface {
 						rs.getInt(10)));
 			}
 		} catch (SQLException e) {
-			System.out.println("Connection Failed!");
+			System.out.println("Connection Failed! SelectByEmployee");
 			e.printStackTrace();
 		}
-		return ticketList;
-		
-
+		ERS_Ticket[] ticketArray = new ERS_Ticket[ticketList.size()];
+		for(int i = 0; i<ticketList.size();i++) {
+			ticketArray[i] = ticketList.get(i);
+		}
+		return ticketArray;
 	}
 
 
@@ -160,7 +162,7 @@ public class TicketDAO implements TicketDAOInterface {
 		
 						
 		} catch (SQLException e) {
-			System.out.println("Connection Failed!");
+			System.out.println("Connection Failed! UpdateTicket");
 			e.printStackTrace();
 		}
 

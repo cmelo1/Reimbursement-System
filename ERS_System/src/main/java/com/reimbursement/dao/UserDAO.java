@@ -66,7 +66,7 @@ public class UserDAO implements UserDAOInterface {
 			}
 
 		} catch (SQLException e) {
-			System.out.println("Connection Failed!");
+			System.out.println("Connection Failed! SelectUser");
 			e.printStackTrace();
 		}
 		return null;

@@ -21,7 +21,7 @@ private int status_id;
 private int type_id;
 
 public ERS_Ticket() {}
-public ERS_Ticket(int id,double amount,Timestamp resolve_date,Timestamp submit_date, //SQL constructor
+public ERS_Ticket(int id,double amount,Timestamp submit_date,Timestamp resolve_date, //SQL constructor
 		String description,Blob receipt,int author,int resolver ,int status_id,int type_id) {
 	
 	this.ticket_id = id;
@@ -38,6 +38,12 @@ public ERS_Ticket(int id,double amount,Timestamp resolve_date,Timestamp submit_d
 	
 }
 
+@Override
+public String toString() {
+	return "ERS_Ticket [ticket_id=" + ticket_id + ", ticket_amount=" + ticket_amount + ", submit_date=" + submit_date
+			+ ", resolve_date=" + resolve_date + ", description=" + description + ", receipt=" + receipt + ", author="
+			+ author + ", resolver=" + resolver + ", status_id=" + status_id + ", type_id=" + type_id + "]";
+}
 public int getTicket_Id() {
 	return ticket_id;
 }

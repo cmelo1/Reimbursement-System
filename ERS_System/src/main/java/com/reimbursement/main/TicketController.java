@@ -1,5 +1,6 @@
 package com.reimbursement.main;
 
+import java.io.IOException;
 import java.sql.Blob;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -7,6 +8,8 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.reimbursement.dao.TicketDAO;
 import com.reimbursement.model.ERS_Ticket;
 import com.reimbursement.model.ERS_User;
@@ -43,14 +46,23 @@ public class TicketController { //NEEDS TO BE WORKED ON LOL
 		ticketDAO.insertTicket(newTicket);
 		return "/HTML/employee.html";
 		
-			
-	
-	
-	
 	}
 
 	public static String displayTickets(HttpServletRequest request,HttpServletResponse response) {
 		
+		
+		//Sessions - Marshalling Tool
+		ERS_User EmployeeUser = (ERS_User)request.getSession().getAttribute("CurrentUser");
+		TicketDAO tick = new TicketDAO();
+		ERS_Ticket[] ticketList = tick.selectByEmployee(EmployeeUser);
+		
+		try {
+			response.getWriter().write(new ObjectMapper().writeValueAsString(ticketList)); //returning an array 
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
