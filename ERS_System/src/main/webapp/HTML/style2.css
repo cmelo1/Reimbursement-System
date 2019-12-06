@@ -90,7 +90,7 @@ h2 {
 	border: 1px solid black;
 	border-spacing: 25px;
 	background-color: #dadada;
-	width: 33.33%;
+	width: 33.33%
 }
 
 #tablebody tr:hover{
@@ -110,6 +110,9 @@ table.bottomBorder{
 th, td ,tr{ 
   border-bottom: 1px solid black !important;
   border-weight: 5px;
+
+ 
+
 }
 
 td{
@@ -129,7 +132,7 @@ table {
     border-collapse: separate;
     border-spacing: 0px;
     border-color: grey;
-    border-radius: ; /* y blank?*/
+    border-radius:
 }
 .currentTickets{
 	float: left;

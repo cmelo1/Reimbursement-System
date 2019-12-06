@@ -6,6 +6,7 @@
 <title>Employee Landing Page</title>
 <link rel="stylesheet" href="sort-table.css">
 <link rel="stylesheet" type="text/css" href="style2.css">
+<link rel="stylesheet" type="text/css" href="../Styles/modal.css">
 </head>
 
 <!-- Grid Layout -->
@@ -15,8 +16,52 @@
 	<div class="row">
 		<div class="col-12 topBanner">
 			<div id="username">Unfilled Username</div>
+			
+			<!--  Begin Modal -->
+			<button id="myBtn">Open Modal</button>
+
+
 			<button id="logout" type="button">Log Out</button>
 			<!--<div id="password"> Unfilled Password</div>-->
+			<div id="modalBlock">
+			
+			<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Ticket #</h2>
+    </div>
+    <div class="modal-body">
+    
+    <div class="row">
+  	<div class="column">
+  	  <p id="employeeNameId">Employee Name: </p>
+      <p id="amountID">Amount: </p>
+      <p id="dateSubmittedId">Date Submitted: </p>
+      <p id="dateResolvedId">Date Resolved: </p>
+      <p id="descriptionId">Description: </p>
+  	</div>
+  	<div class="column">
+  	  <p id="receiptID">Receipt: </p>
+      <p id="authorId">Author: </p>
+      <p id="resolverId">Resolver: </p>
+      <p id="statusId">Status: </p>
+      <p id="expenseTypeId">Expense Type: </p></div>
+	</div>
+ 
+    </div>
+    </div>    
+  </div>
+  
+      <div id="snackbar">Approved</div>
+			
+			</div>
+			
+			
+			
 		</div>
 	</div>
 	<!-- Left Pane -->
@@ -112,15 +157,16 @@
 					<option>Lodging</option>
 					<option>Travel</option>
 					<option>Other</option>
-				</select><br>
-				Amount: <input type="text" name="ticketAmount" placeholder="Enter Ticket Amount $0.00"><br>
-				<textarea name="Description" id="ticketDesc" rows="4" cols="60">(Enter Ticket Description)</textarea>
-				<br> Date: <input id="autoToday" type="date" name="subDate"> 
-				<input type="submit" value="Submit" />
+				</select>
 			</form>
+			<br>
+			<textarea name="Description" id="ticketDesc" rows="4" cols="65">(Enter Ticket Description)</textarea>
+			<br>Date: <input id="autoToday" type="date" name="subDate">
+			<input type="submit" value="Submit" />
 		</div>
 	</div>
-
+	
+	<script type="text/javascript" src="../JavaScript/modal.js"></script>
 	<script type="text/javascript" src="../JavaScript/employee.js"></script>
 	<script type="text/javascript" src="../JavaScript/sort-table.js"></script>
 </body>
