@@ -9,6 +9,7 @@ public class ERS_Ticket {
 	/*
 	 * 
 	 */
+
 private int ticket_id;
 private double ticket_amount;
 private Timestamp submit_date; //getters/setters might have to convert between SQL time if its different.
@@ -23,6 +24,7 @@ private int type_id;
 public ERS_Ticket() {}
 public ERS_Ticket(int id,double amount,Timestamp submit_date,Timestamp resolve_date, //SQL constructor
 		String description,Blob receipt,int author,int resolver ,int status_id,int type_id) {
+	
 	
 	this.ticket_id = id;
 	this.ticket_amount=amount;
