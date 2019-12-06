@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.apache.log4j.net.SyslogAppender;
+
 import com.reimbursement.model.*;
 
 public class TicketDAO implements TicketDAOInterface {
@@ -50,10 +52,11 @@ public class TicketDAO implements TicketDAOInterface {
 			ps.setInt(1, x);
 			
 			ResultSet rs = ps.executeQuery();
+			System.out.println(rs.getDouble(2));
 			while (rs.next()) {
 				tick = new ERS_Ticket(
 						rs.getInt(1),
-						rs.getInt(2),
+						rs.getDouble(2),
 						rs.getTimestamp(3),
 						rs.getTimestamp(4),
 						rs.getString(5),
@@ -81,7 +84,7 @@ public class TicketDAO implements TicketDAOInterface {
 			while (rs.next()) {
 				ticketList.add(new ERS_Ticket(
 						rs.getInt(1),
-						rs.getInt(2),
+						rs.getDouble(2),
 						rs.getTimestamp(3),
 						rs.getTimestamp(4),
 						rs.getString(5),
@@ -110,7 +113,7 @@ public class TicketDAO implements TicketDAOInterface {
 			while (rs.next()) {
 				ticketList.add(new ERS_Ticket(
 						rs.getInt(1),
-						rs.getInt(2),
+						rs.getDouble(2),
 						rs.getTimestamp(3),
 						rs.getTimestamp(4),
 						rs.getString(5),

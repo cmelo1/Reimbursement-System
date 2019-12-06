@@ -5,7 +5,8 @@
 <meta charset="UTF-8">
 <title>Employee Landing Page</title>
 <link rel="stylesheet" href="sort-table.css">
-<link rel="stylesheet" type="text/css" href="employeeStyle.css">
+<link rel="stylesheet" type="text/css"
+	href="../Styles/employeeStyle.css">
 <link rel="stylesheet" type="text/css" href="../Styles/modal.css">
 </head>
 
@@ -16,52 +17,51 @@
 	<div class="row">
 		<div class="col-12 topBanner">
 			<div id="username">Unfilled Username</div>
-			
 			<!--  Begin Modal -->
 			<button id="myBtn">Open Modal</button>
-
 
 			<button id="logout" type="button">Log Out</button>
 			<!--<div id="password"> Unfilled Password</div>-->
 			<div id="modalBlock">
-			
-			<!-- The Modal -->
-<div id="myModal" class="modal">
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="close">&times;</span>
-      <h2>Ticket #</h2>
-    </div>
-    <div class="modal-body">
-    
-    <div class="row">
-  	<div class="column">
-  	  <p id="employeeNameId">Employee Name: </p>
-      <p id="amountID">Amount: </p>
-      <p id="dateSubmittedId">Date Submitted: </p>
-      <p id="dateResolvedId">Date Resolved: </p>
-      <p id="descriptionId">Description: </p>
-  	</div>
-  	<div class="column">
-  	  <p id="receiptID">Receipt: </p>
-      <p id="authorId">Author: </p>
-      <p id="resolverId">Resolver: </p>
-      <p id="statusId">Status: </p>
-      <p id="expenseTypeId">Expense Type: </p></div>
-	</div>
- 
-    </div>
-    </div>    
-  </div>
-  
-      <div id="snackbar">Approved</div>
-			
+				<!-- The Modal -->
+				<div id="myModal" class="modal">
+
+					<!-- Modal content -->
+					<div class="modal-content">
+						<div class="modal-header">
+							<span class="close">&times;</span>
+							<h2>Ticket #</h2>
+						</div>
+						<div class="modal-body">
+
+							<div class="row">
+								<div class="column">
+									<p id="employeeNameId">Employee Name:</p>
+									<p id="amountID">Amount:</p>
+									<p id="dateSubmittedId">Date Submitted:</p>
+									<p id="dateResolvedId">Date Resolved:</p>
+									<p id="descriptionId">Description:</p>
+								</div>
+								<div class="column">
+									<p id="receiptID">Receipt:</p>
+									<p id="authorId">Author:</p>
+									<p id="resolverId">Resolver:</p>
+									<p id="statusId">Status:</p>
+									<p id="expenseTypeId">Expense Type:</p>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div id="snackbar">Approved</div>
+
 			</div>
-			
-			
-			
+
+
+
 		</div>
 	</div>
 	<!-- Left Pane -->
@@ -103,23 +103,26 @@
 		<!-- Right Pane -->
 		<div class="newTickets">
 			<h2>Submit A New Ticket</h2>
-			<form class="dropDown">
-				<select>
-					<option>Food</option>
-					<option>Lodging</option>
-					<option>Travel</option>
-					<option>Other</option>
-				</select><br>
-				Amount: <input type="text" name="ticketAmount" placeholder="Enter Ticket Amount $0.00" required><br>
-				<textarea name="Description" id="ticketDesc" rows="4" cols="60" maxLength="100" required>(Enter Ticket Description)</textarea>
-				<br> Date: <input id="autoToday" type="date" name="subDate"> 
-				<form action="">
+			<form method="POST" action="submitTicket.do">
+				<select class="dropDown" name="ticketType" id="ticketType">
+					<option value="Food">Food</option>
+					<option value="Lodging">Lodging</option>
+					<option value="Travel">Travel</option>
+					<option value="Other">Other</option>
+				</select>
+				<br> Amount:
+				<input type="text" name="ticketAmount" id="ticketAmount" name="ticketAmount"
+					placeholder="Enter Ticket Amount $0.00" min="0.01" step="0.01" max="2500" required>
+					
+				<textarea name="ticketDesc" placeholder="Enter Ticket Description (Required)" name="ticketDesc" id="ticketDesc" rows="4" cols="60"
+					maxLength="100" required></textarea>
+					
+				<br> Date: <input id="autoToday" type="date" name="subDate">
 				<input type="submit" value="Submit" />
-				</form>
 			</form>
 		</div>
 	</div>
-	
+
 	<script type="text/javascript" src="../JavaScript/modal.js"></script>
 	<script type="text/javascript" src="../JavaScript/employee.js"></script>
 	<script type="text/javascript" src="../JavaScript/sort-table.js"></script>

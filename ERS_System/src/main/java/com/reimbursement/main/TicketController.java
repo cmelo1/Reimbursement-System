@@ -18,19 +18,36 @@ public class TicketController { //NEEDS TO BE WORKED ON LOL
 	
 	public static String submitTicket(HttpServletRequest request){
 		ERS_User EmployeeUser = (ERS_User)request.getSession().getAttribute("CurrentUser");
+		
 		TicketDAO ticketDAO = new TicketDAO();
 		Date date= new Date();
 		int ticket_Id = 0;
-		//this Integer parsing might cause trouble later.
-		double ticket_amount = Integer.parseInt(request.getParameter("ticket_amount"));
+		double ticket_amount = Double.parseDouble(request.getParameter("ticketAmount"));
 		Timestamp current_date = new Timestamp(date.getTime());
 		Timestamp resolve_date=null;
-		String ticket_description = request.getParameter("description");
+		String ticket_description = request.getParameter("ticketDesc");
+		System.out.println(ticket_description);
 		Blob receipt = null;
 		int author = EmployeeUser.getUser_id();
 		int resolver = 0;
 		int status_id = 140;
-		int type_id = Integer.parseInt(request.getParameter("type_id"));
+		String responseType = request.getParameter("ticketType");
+		int type_id = 0;
+		switch(responseType) {
+		case "Food":
+			type_id = 142;
+			break;
+		case "Lodging":
+			type_id = 140;
+			break;
+		case "Travel":
+			type_id = 141;
+			break;
+		case "Other":
+			type_id = 143;
+			break;
+		}
+		
 		ERS_Ticket newTicket = new ERS_Ticket(
 				ticket_Id,
 				ticket_amount,
@@ -43,7 +60,10 @@ public class TicketController { //NEEDS TO BE WORKED ON LOL
 				status_id,
 				type_id);
 		
+		
 		ticketDAO.insertTicket(newTicket);
+		request.getSession().setAttribute("CurrentUser",EmployeeUser);
+		//return "/HTML/employee.do";
 		return "/HTML/employee.html";
 		
 	}

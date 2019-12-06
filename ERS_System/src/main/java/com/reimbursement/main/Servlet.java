@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Servlet extends HttpServlet {
        
-
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		RequestHelper.process(request, response);
 	}

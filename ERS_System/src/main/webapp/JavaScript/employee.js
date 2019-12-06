@@ -17,13 +17,10 @@ function getUserInfo(){
 			setValues(user); //Call set values function defined below
 		}
 	}
-
 	//this goes straight to the request helper.
 xhttp.open("GET",'http://localhost:8080/ERS_System/HTML/employee.do',true); //Sends the set values 'request' to this.
 xhttp.send();
 }
-
-
 
 
 //How to parse an array?
@@ -40,7 +37,6 @@ function getTicketInfo(){
 		//this goes straight to the request helper.
 		xhttp.open("GET",'http://localhost:8080/ERS_System/HTML/displayTickets.do',true); //Sends the set values 'request' to this.
 		xhttp.send();
-	
 }
 
 function setValues(user){
@@ -60,7 +56,7 @@ function setTableValues(ticketList){
 	
 
 		html += "<tr> <td>" + ticketList[i].ticket_Id + "</td>"
-	    +"<td>" + ticketList[i].amount + "</td>"
+	    +"<td> $" + ticketList[i].amount + "</td>"
 	    +"<td>" + date.getMonth()+"/"+date.getDay()+"/"+date.getFullYear() + "</td>"
 	    +"<td>" + ticketList[i].resolve_date + "</td>"
 	    +"<td>" + ticketList[i].description + "</td>"
