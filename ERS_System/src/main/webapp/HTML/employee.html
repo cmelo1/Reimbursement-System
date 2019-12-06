@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <title>Employee Landing Page</title>
 <link rel="stylesheet" href="sort-table.css">
-<link rel="stylesheet" type="text/css" href="style2.css">
+<link rel="stylesheet" type="text/css" href="employeeStyle.css">
 <link rel="stylesheet" type="text/css" href="../Styles/modal.css">
 </head>
 
@@ -97,54 +97,6 @@
 						<td>Approved</td>
 						<td>Travel</td>
 					</tr>
-					<tr>
-						<td>0023</td>
-						<td>$12.50</td>
-						<td>11/30/2019</td>
-						<td>11/31/2019</td>
-						<td>null</td>
-						<td>BLOB</td>
-						<td>1000</td>
-						<td>1015</td>
-						<td>Denied</td>
-						<td>Food</td>
-					</tr>
-					<tr>
-						<td>0013</td>
-						<td>$77.87</td>
-						<td>10/25/2019</td>
-						<td>null</td>
-						<td>null</td>
-						<td>BLOB</td>
-						<td>1000</td>
-						<td>1017</td>
-						<td>Pending</td>
-						<td>Lodging</td>
-					</tr>
-					<tr>
-						<td>0156</td>
-						<td>$20.00</td>
-						<td>11/14/2019</td>
-						<td>11/22/2019</td>
-						<td>null</td>
-						<td>BLOB</td>
-						<td>1000</td>
-						<td>1738</td>
-						<td>Approved</td>
-						<td>Other</td>
-					</tr>
-					<tr>
-						<td>0088</td>
-						<td>$55.17</td>
-						<td>10/19/2019</td>
-						<td>10/31/2019</td>
-						<td>null</td>
-						<td>BLOB</td>
-						<td>1000</td>
-						<td>4444</td>
-						<td>Denied</td>
-						<td>Food</td>
-					</tr>
 				</tbody>
 			</table>
 		</div>
@@ -157,12 +109,14 @@
 					<option>Lodging</option>
 					<option>Travel</option>
 					<option>Other</option>
-				</select>
+				</select><br>
+				Amount: <input type="text" name="ticketAmount" placeholder="Enter Ticket Amount $0.00" required><br>
+				<textarea name="Description" id="ticketDesc" rows="4" cols="60" maxLength="100" required>(Enter Ticket Description)</textarea>
+				<br> Date: <input id="autoToday" type="date" name="subDate"> 
+				<form action="">
+				<input type="submit" value="Submit" />
+				</form>
 			</form>
-			<br>
-			<textarea name="Description" id="ticketDesc" rows="4" cols="65">(Enter Ticket Description)</textarea>
-			<br>Date: <input id="autoToday" type="date" name="subDate">
-			<input type="submit" value="Submit" />
 		</div>
 	</div>
 	
