@@ -63,7 +63,36 @@ function setTableValues(ticketList) {
 		let date = new Date(ticketList[i].submit_date);
 		let rdate = new Date(ticketList[i].resolve_date);
 		// Insert row based on parameters.
-	
+		
+		let status = ticketList[i].status_id;
+		switch(status){
+		case 140:
+			status = "PENDING";
+			break;
+		case 141: 
+			status = "APPROVED";
+			break;
+		case 142:
+			status = "DENIED";
+			break;
+		}
+		
+		let typeid = ticketList[i].type_id;
+		switch(typeid){
+		
+		case 140:
+			typeid = "LODGING";
+			break;
+		case 141: 
+			typeid = "TRAVEL";
+			break;
+		case 142:
+			typeid = "FOOD";
+			break;
+		case 143:
+			typeid = "OTHER";
+			break;
+		}
 
 		html += "<tr> <td>" + ticketList[i].ticket_Id + "</td>" + "<td>"
 				+ ticketList[i].amount + "</td>" + "<td>" + date.getMonth()
@@ -74,8 +103,7 @@ function setTableValues(ticketList) {
 				+ ticketList[i].receipt + "</td>" + "<td>"
 				+ ticketList[i].author + "</td>" + "<td>"
 				+ ticketList[i].resolver + "</td>" + "<td>"
-				+ ticketList[i].status_id + "</td>" + "<td>"
-				+ ticketList[i].type_id + "</td>" + "</tr>";
+				+ status + "</td>" + "<td>" + typeid + "</td>" + "</tr>";
 		// https://stackoverflow.com/questions/34880415/adding-id-to-html-table-row-in-javascript/34880611
 		document.getElementById("tablebody").innerHTML = html;
 
@@ -115,6 +143,38 @@ function modalStuff(row) {
 	var span = document.getElementsByClassName("close")[0];
 
 	// When the user clicks on the button, open the modal
+	
+	let status = row.status_id;
+	switch(status){
+	case 140:
+		status = "PENDING";
+		break;
+	case 141: 
+		status = "APPROVED";
+		break;
+	case 142:
+		status = "DENIED";
+		break;
+	}
+	
+	let typeid = row.type_id;
+	switch(typeid){
+	case 140:
+		typeid = "LODGING";
+		break;
+	case 141: 
+		typeid = "TRAVEL";
+		break;
+	case 142:
+		typeid = "FOOD";
+		break;
+	case 143:
+		typeid = "OTHER";
+		break;
+	}
+	
+	
+	
 	let date = new Date(row.submit_date);
 	document.getElementById("employeeNameId").innerHTML = "Employee ID: <i>"
 			+ row.author + "</i>";
@@ -136,10 +196,11 @@ function modalStuff(row) {
 			+ "</i>";
 	document.getElementById("resolverId").innerHTML = "Resolver: <i> "
 			+ row.resolver + "</i>";
+	
 	document.getElementById("statusId").innerHTML = "Status: <i> "
-			+ row.status_id + "</i>";
+			+ status + "</i>";
 	document.getElementById("expenseTypeId").innerHTML = "Expense Type: <i> "
-			+ row.type_id + "</i>";
+			+ typeid + "</i>";
 
 	modal.style.display = "block";
 
