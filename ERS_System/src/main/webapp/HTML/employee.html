@@ -17,8 +17,10 @@
 	<div class="row">
 		<div class="col-12 topBanner">
 			<div id="username">Unfilled Username</div>
+
 			<!--  Begin Modal -->
 			<button id="myBtn">Open Modal</button>
+
 
 			<button id="logout" type="button">Log Out</button>
 			<!--<div id="password"> Unfilled Password</div>-->
@@ -60,55 +62,70 @@
 
 			</div>
 
-
-
 		</div>
 	</div>
 	<!-- Left Pane -->
+	<input type="text" id="searchInput" onkeyup="searchFunction()"
+		placeholder="Search for names..">
 	<div class="row">
-		<div class="currentTickets" style="text-align:center">
+		<div class="currentTickets">
 			<h2>Ticket Log</h2>
 			<table class="js-sort-table" id="table1">
 				<caption>TICKETS</caption>
 				<thead>
 					<tr>
-						<th class="js-sort-number">Ticket ID</th>
+						<th class="js-sort-number">Ticket #</th>
 						<th class="js-sort-number">Amount</th>
 						<th class="js-sort-date">Submission Date</th>
+						<th class="js-sort-date">Resolve Date</th>
+						<th>Description</th>
+						<th>Receipt</th>
+						<th>Employee ID #</th>
+						<th class="js-sort-number">Manager ID #</th>
 						<th class="js-sort-string">Status</th>
 						<th class="js-sort-string">Type</th>
 					</tr>
 				</thead>
 				<tbody id="tablebody">
-					<!--  This gets populated by javascript -->
+					<tr>
+						<td>0001</td>
+						<td>$250.00</td>
+						<td>12/01/2019</td>
+						<td>12/5/2019</td>
+						<td>null</td>
+						<td>BLOB</td>
+						<td>1000</td>
+						<td>1010</td>
+						<td>Approved</td>
+						<td>Travel</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
 		<!-- Right Pane -->
 		<div class="newTickets">
 			<h2>Submit A New Ticket</h2>
-			<form method="POST" action="submitTicket.do">
-				<select class="dropDown" name="ticketType" id="ticketType">
-					<option value="Food">Food</option>
-					<option value="Lodging">Lodging</option>
-					<option value="Travel">Travel</option>
-					<option value="Other">Other</option>
-				</select>
-				<br> Amount:
-				<input type="text" name="ticketAmount" id="ticketAmount" name="ticketAmount"
-					placeholder="Enter Ticket Amount $0.00" min="0.01" step="0.01" max="2500" required>
-					
-				<textarea name="ticketDesc" placeholder="Enter Ticket Description (Required)" name="ticketDesc" id="ticketDesc" rows="4" cols="60"
-					maxLength="100" required></textarea>
-					
+			<form class="dropDown">
+				<select>
+					<option>Food</option>
+					<option>Lodging</option>
+					<option>Travel</option>
+					<option>Other</option>
+				</select><br> Amount: <input type="text" name="ticketAmount"
+					placeholder="Enter Ticket Amount $0.00" required><br>
+				<textarea name="Description" id="ticketDesc" rows="4" cols="60"
+					maxLength="100" required>(Enter Ticket Description)</textarea>
 				<br> Date: <input id="autoToday" type="date" name="subDate">
-				<input type="submit" value="Submit" />
+				<form action="">
+					<input type="submit" value="Submit" />
+				</form>
 			</form>
 		</div>
 	</div>
 
+	<script type="text/javascript" src="../JavaScript/sort-table.js"></script>
 	<script type="text/javascript" src="../JavaScript/modal.js"></script>
 	<script type="text/javascript" src="../JavaScript/employee.js"></script>
-	<script type="text/javascript" src="../JavaScript/sort-table.js"></script>
+
 </body>
 </html>
