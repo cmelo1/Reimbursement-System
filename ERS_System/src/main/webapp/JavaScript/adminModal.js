@@ -8,14 +8,14 @@ var modal = document.getElementById("myModal");
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-//Get the button that opens the modal
+// Get the button that opens the modal
 var approveButton = document.getElementById("approveButton");
 
 // Get the button that opens the modal
 var denyButton = document.getElementById("denyButton");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
@@ -66,5 +66,8 @@ function deniedSnackbar() {
 	}, 3000);
 }
 
+/*
+ * document.getElementById("p2").className = "classname";
+ */
 
 

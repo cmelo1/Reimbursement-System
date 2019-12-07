@@ -293,4 +293,3 @@ window.addEventListener
 if (typeof NodeList.prototype.forEach !== "function") {
     NodeList.prototype.forEach = Array.prototype.forEach;
 }
-
