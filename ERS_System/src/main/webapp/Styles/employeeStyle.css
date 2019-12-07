@@ -2,24 +2,9 @@
 
 /* BASIC */
 
-html {
-  background-color: #F84600;
-}
-
-#mainbody {
-	background-color: #F84600;
-}
-
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
-}
-
-a {
-  color: #92badd;
-  display:inline-block;
-  text-decoration: none;
-  font-weight: 400;
 }
 
 h2 {
@@ -29,57 +14,55 @@ h2 {
   text-transform: uppercase;
   display:inline-block;
   margin: 40px 8px 10px 8px; 
-  color: #cccccc;
+  color: black;
+}
+
+h3 {
+	font-family: "Verdana";
+	text-align: center;
+	font-size: 30px;
+	font-weight: 700;
+	display: inline-block;
+	margin: 40px 8px 10px 8px;
+	color: black;
+}
+
+.header h4 {
+	font-family: "Verdana";
+	text-align : center;
+	font-size: 30px;
+	font-weight: 700;
+	color: black;
+	text-align: center;
 }
 
 /* STRUCTURE */
-
-/* Index */
-
-.wrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: column; 
-  justify-content: center;
-  width: 100%;
-  min-height: 100%;
-  padding: 20px;
-}
-
-#formContent {
-  -webkit-border-radius: 10px 10px 10px 10px;
-  border-radius: 10px 10px 10px 10px;
-  background: #fff;
-  padding: 30px;
-  width: 90%;
-  max-width: 450px;
-  position: relative;
-  padding: 0px;
-  -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
-  text-align: center;
-}
-
-#formFooter {
-  background-color: #f6f6f6;
-  border-top: 1px solid #dce8f1;
-  padding: 25px;
-  text-align: center;
-  -webkit-border-radius: 0 0 10px 10px;
-  border-radius: 0 0 10px 10px;
-}
 
 /* Employee */
 * {
 	box-sizing: border-box;
 }
 
+.topOptions {
+	position: relative;
+	float: right;
+}
+
+.topBanner{
+	padding: 15px;
+	border: 1.5px solid black;
+	border-spacing: 1px;
+	box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3), 0 50px 110px 0 rgba(0, 0, 0, 0.24);
+	background-color: #808000;
+}
+
 .newTickets{
 	float: left;
 	padding: 15px;
-	border: 1px solid black;
-	border-spacing: 25px;
+	border: 1.5px solid black;
+	border-spacing: 1px;
 	background-color: #dadada;
+	box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3), 0 50px 110px 0 rgba(0, 0, 0, 0.24);
 	width: 50%;
 	min-height: 100vh;
 }
@@ -87,9 +70,10 @@ h2 {
 .currentTickets{
 	float: left;
 	padding: 15px;
-	border: 1px solid black;
-	border-spacing: 25px;
+	border: 1.5px solid black;
+	border-spacing: 1px;
 	background-color: #dadada;
+	box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3), 0 50px 110px 0 rgba(0, 0, 0, 0.24);
 	width: 50%;
 	min-height: 100vh;
 }
@@ -141,15 +125,53 @@ textarea:focus {
 input[type=text]:focus {
   border: 3px solid #555;
 }
+#ticketAmount {
+	width: 150px;
+	height: 20px;
+	padding: 1px
+}
+
+#ticketDesc {
+	background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(255,255,255,1) 0%, rgba(226,226,226,0.7990546560421043) 100%);
+}
+
+/* Remove controls from Safari and Chrome */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+  margin: 0; /* Removes leftover margin */
+}
+/* For Firefox */
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: grey;
+	opacity: 1; /* Firefox */
+	text-size: 15px;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+	color: grey;
+	opacity: 1;
+	text-size: 15px;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+	color: grey;
+	opacity: 1;
+	text-size: 15px;
+}
 
 #table1{
 	margin: auto;
 }
 
-#tablebody tr:hover{
-          background-color: #56baed;
-	}
-	
+#tablebody tr:hover {
+	background-color: #56baed;
+}
+
 /** Border stuff **/
 #tablebody{
 	box-shadow: 10px 10px gray;
@@ -200,18 +222,6 @@ table {
 		box-shadow: inset 0 0 5px rgba(000,000,000, 0.5);
 	}
 </style>
-
-/* TABS */
-h2.inactive {
-  color: #cccccc;
-}
-
-h2.active {
-  color: #0d0d0d;
-  border-bottom: 2px solid #5fbae9;
-}
-
-
 
 /* FORM TYPOGRAPHY*/
 
@@ -383,8 +393,6 @@ input[type=text]:placeholder {
   width: 100%;
 }
 
-
-
 /* OTHERS */
 
 *:focus {
@@ -397,16 +405,4 @@ input[type=text]:placeholder {
 
 * {
   box-sizing: border-box;
-}
-
-
-#myInput {
-  background-image: url('/css/searchicon.png'); /* Add a search icon to input */
-  background-position: 10px 12px; /* Position the search icon */
-  background-repeat: no-repeat; /* Do not repeat the icon image */
-  width: 100%; /* Full-width */
-  font-size: 16px; /* Increase font-size */
-  padding: 12px 20px 12px 40px; /* Add some padding */
-  border: 1px solid #ddd; /* Add a grey border */
-  margin-bottom: 12px; /* Add some space below the input */
 }
