@@ -61,13 +61,15 @@ function setTableValues(ticketList) {
 	for (var i = 0; i < ticketList.length; i++) {
 
 		let date = new Date(ticketList[i].submit_date);
+		let rdate = new Date(ticketList[i].resolve_date);
 		// Insert row based on parameters.
-		// "<tr id=" + "\"row"+ i +"\">" + "<td>" + ticketList[i].ticket_Id +
+	
 
 		html += "<tr> <td>" + ticketList[i].ticket_Id + "</td>" + "<td>"
 				+ ticketList[i].amount + "</td>" + "<td>" + date.getMonth()
 				+ "/" + date.getDay() + "/" + date.getFullYear() + "</td>"
-				+ "<td>" + ticketList[i].resolve_date + "</td>" + "<td>"
+				+ "<td>" + rdate.getMonth()
+				+ "/" + rdate.getDay() + "/" + rdate.getFullYear() + "</td>" + "<td>"
 				+ ticketList[i].description + "</td>" + "<td>"
 				+ ticketList[i].receipt + "</td>" + "<td>"
 				+ ticketList[i].author + "</td>" + "<td>"
