@@ -12,7 +12,12 @@ public class RequestHelper {
 
 		switch (request.getRequestURI()) {
 		case "/ERS_System/HTML/index.do": 
+			try {
 			return LoginController.login(request);
+			}
+			catch(NullPointerException e) {
+			return "/HTML/index.html";
+			}
 		case "/ERS_System/HTML/employee.do"://recently changed
 			return EmployeeController.Home(request, response); 
 		case "/ERS_System/HTML/Manager.do":
@@ -22,10 +27,14 @@ public class RequestHelper {
 			return TicketController.submitTicket(request);
 		case "/ERS_System/HTML/displayTickets.do":
 			return TicketController.displayTickets(request,response);
-			
-			
-			
+		case "/ERS_System/HTML/displayAllTickets.do":
+			return TicketController.displayAllTickets(request,response);
+		case "/ERS_System/HTML/approveTicket.do":
+			return TicketController.approveTicket(request);
+		case "/ERS_System/HTML/denyTicket.do":
+			return TicketController.denyTicket(request);
 		default:
+			
 			return "/HTML/index.html";
 		}
 

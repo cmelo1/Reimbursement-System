@@ -74,12 +74,12 @@ public class TicketDAO implements TicketDAOInterface {
 		
 	}
 
-	@Override
-	public ArrayList<ERS_Ticket> selectAllTickets() {
+	public ERS_Ticket[] selectAllTickets() { 
 		ArrayList<ERS_Ticket> ticketList = new ArrayList<ERS_Ticket>();
 		try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password)) {
 
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT");
+			
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				ticketList.add(new ERS_Ticket(
@@ -95,13 +95,16 @@ public class TicketDAO implements TicketDAOInterface {
 						rs.getInt(10)));
 			}
 		} catch (SQLException e) {
-			System.out.println("Connection Failed! Select All ticket");
+			System.out.println("Connection Failed! SelectAllEmployees");
 			e.printStackTrace();
 		}
-		return ticketList;
-		
-
+		ERS_Ticket[] ticketArray = new ERS_Ticket[ticketList.size()];
+		for(int i = 0; i<ticketList.size();i++) {
+			ticketArray[i] = ticketList.get(i);
+		}
+		return ticketArray;
 	}
+
 	
 	public ERS_Ticket[] selectByEmployee(ERS_User x) { 
 		ArrayList<ERS_Ticket> ticketList = new ArrayList<ERS_Ticket>();
@@ -171,6 +174,49 @@ public class TicketDAO implements TicketDAOInterface {
 
 		
 		
+	}
+	public static void commit() {
+		try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password)) {
+			PreparedStatement ps = conn.prepareStatement("COMMIT");
+			ps.executeQuery();
+		} catch (SQLException e) {
+			System.out.println("Connection Failed! COMMIT");
+			e.printStackTrace();
+		}
+
+	}
+	
+	public void approveTicket(String x) {
+		try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password)) {
+			PreparedStatement ps = conn.prepareStatement(
+"UPDATE ERS_REIMBURSEMENT SET REIMB_STATUS_ID = 141 WHERE REIMB_ID =?");
+			int y = Integer.valueOf(x);
+			ps.setInt(1, y);
+			ps.executeUpdate();
+			commit();
+			
+		
+						
+		} catch (SQLException e) {
+			System.out.println("Statement Failed! ApproveTicket");
+			e.printStackTrace();
+		}
+
+	}
+	public void denyTicket(String x) {
+		try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password)) {
+			PreparedStatement ps = conn.prepareStatement(
+"UPDATE ERS_REIMBURSEMENT SET REIMB_STATUS_ID = 142 WHERE REIMB_ID =?");
+			System.out.println("INSIDE DENY TICKET");
+			int y = Integer.valueOf(x);
+			ps.setInt(1, y);
+			ps.executeUpdate();
+					
+		} catch (SQLException e) {
+			System.out.println("Statement Failed! denyTicket");
+			e.printStackTrace();
+		}
+
 	}
 
 }
