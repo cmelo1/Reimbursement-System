@@ -13,10 +13,8 @@ public class RequestHelper {
 		switch (request.getRequestURI()) {
 		case "/ERS_System/HTML/index.do": 
 			return LoginController.login(request);
-			
 		case "/ERS_System/HTML/employee.do"://recently changed
 			return EmployeeController.Home(request, response); 
-			
 		case "/ERS_System/HTML/Manager.do":
 			return ManagerController.Home(request,response);
 		case "/ERS_System/HTML/submitTicket.do":

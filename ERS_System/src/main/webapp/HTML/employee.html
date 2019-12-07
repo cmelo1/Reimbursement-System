@@ -4,8 +4,8 @@
 <style></style>
 <meta charset="UTF-8">
 <title>Employee Landing Page</title>
-<link rel="stylesheet" href="sort-table.css">
-<link rel="stylesheet" type="text/css" href="style2.css">
+<link rel="stylesheet" type="text/css" href="../Styles/employeeStyle.css">
+<link rel="stylesheet" type="text/css" href="../Styles/modal.css">
 </head>
 
 <!-- Grid Layout -->
@@ -14,113 +14,98 @@
 <body style="background: linear-gradient(to bottom, #F84600, #a0a0a0)">
 	<div class="row">
 		<div class="col-12 topBanner">
-			<div id="username">Unfilled Username</div>
-			<button id="logout" type="button">Log Out</button>
-			<!--<div id="password"> Unfilled Password</div>-->
+			<div class="topOptions">
+				<div id="username">Unfilled Username</div>
+				<!--  Begin Modal -->
+				<button id="logout" type="button">Log Out</button>
+			</div>
+			<div id="modalBlock">
+
+				<!-- The Modal -->
+				<div id="myModal" class="modal">
+
+					<!-- Modal content -->
+					<div class="modal-content">
+						<div class="modal-header">
+							<span class="close">&times;</span>
+							<h2>Ticket #</h2>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="column">
+									<p id="employeeNameId">Employee Name:</p>
+									<p id="amountID">Amount:</p>
+									<p id="dateSubmittedId">Date Submitted:</p>
+									<p id="dateResolvedId">Date Resolved:</p>
+									<p id="descriptionId">Description:</p>
+								</div>
+								<div class="column">
+									<p id="receiptID">Receipt:</p>
+									<p id="authorId">Author:</p>
+									<p id="resolverId">Resolver:</p>
+									<p id="statusId">Status:</p>
+									<p id="expenseTypeId">Expense Type:</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div id="snackbar">Approved</div>
+
+			</div>
+
+
+
 		</div>
 	</div>
-	<!-- Left Pane -->
 	<div class="row">
-		<div class="currentTickets">
-			<h2>Ticket Log</h2>
-			<table class="js-sort-table" id="table1">
-				<caption>TICKETS</caption>
+	<!-- Left Pane -->
+		<div class="currentTickets" style="text-align:center">
+		<h3>TICKET HISTORY</h3>
+		<br>
+			<table class="js-sort-table" id="table1" >
 				<thead>
 					<tr>
-						<th class="js-sort-number">Ticket #</th>
+						<th class="js-sort-number">Ticket ID</th>
 						<th class="js-sort-number">Amount</th>
 						<th class="js-sort-date">Submission Date</th>
-						<th class="js-sort-date">Resolve Date</th>
-						<th>Description</th>
-						<th>Receipt</th>
-						<th>Employee ID #</th>
-						<th class="js-sort-number">Manager ID #</th>
 						<th class="js-sort-string">Status</th>
 						<th class="js-sort-string">Type</th>
 					</tr>
 				</thead>
 				<tbody id="tablebody">
-					<tr>
-						<td>0001</td>
-						<td>$250.00</td>
-						<td>12/01/2019</td>
-						<td>12/5/2019</td>
-						<td>null</td>
-						<td>BLOB</td>
-						<td>1000</td>
-						<td>1010</td>
-						<td>Approved</td>
-						<td>Travel</td>
-					</tr>
-					<tr>
-						<td>0023</td>
-						<td>$12.50</td>
-						<td>11/30/2019</td>
-						<td>11/31/2019</td>
-						<td>null</td>
-						<td>BLOB</td>
-						<td>1000</td>
-						<td>1015</td>
-						<td>Denied</td>
-						<td>Food</td>
-					</tr>
-					<tr>
-						<td>0013</td>
-						<td>$77.87</td>
-						<td>10/25/2019</td>
-						<td>null</td>
-						<td>null</td>
-						<td>BLOB</td>
-						<td>1000</td>
-						<td>1017</td>
-						<td>Pending</td>
-						<td>Lodging</td>
-					</tr>
-					<tr>
-						<td>0156</td>
-						<td>$20.00</td>
-						<td>11/14/2019</td>
-						<td>11/22/2019</td>
-						<td>null</td>
-						<td>BLOB</td>
-						<td>1000</td>
-						<td>1738</td>
-						<td>Approved</td>
-						<td>Other</td>
-					</tr>
-					<tr>
-						<td>0088</td>
-						<td>$55.17</td>
-						<td>10/19/2019</td>
-						<td>10/31/2019</td>
-						<td>null</td>
-						<td>BLOB</td>
-						<td>1000</td>
-						<td>4444</td>
-						<td>Denied</td>
-						<td>Food</td>
-					</tr>
+				<!--<caption>TICKETS</caption> "dis dont work"  -->
+					<!--  This gets populated by javascript -->
 				</tbody>
 			</table>
 		</div>
+		
 		<!-- Right Pane -->
 		<div class="newTickets">
-			<h2>Submit A New Ticket</h2>
-			<form class="dropDown">
-				<select>
-					<option>Food</option>
-					<option>Lodging</option>
-					<option>Travel</option>
-					<option>Other</option>
-				</select>
+		<div class="header">
+		<h4>SUBMIT A NEW TICKET</h4>
+		</div>
+			<form method="POST" action="submitTicket.do">
+				<select class="dropDown" name="ticketType" id="ticketType">
+					<option value="Food">Food</option>
+					<option value="Lodging">Lodging</option>
+					<option value="Travel">Travel</option>
+					<option value="Other">Other</option>
+				</select><br>
+				<input type="number" name="ticketAmount" id="ticketAmount" name="ticketAmount"
+					placeholder="Enter Amount $0.00" min="0.01" step="0.01" max="2500" required>
+					
+				<textarea name="ticketDesc" placeholder="Enter Ticket Description (Required)" name="ticketDesc" id="ticketDesc" rows="4" cols="60"
+					maxLength="100" required></textarea>
+					
+				<br> Date: <input id="autoToday" type="date" name="subDate">
+				<input type="submit" value="Submit" />
 			</form>
-			<br>
-			<textarea name="Description" id="ticketDesc" rows="4" cols="65">(Enter Ticket Description)</textarea>
-			<br>Date: <input id="autoToday" type="date" name="subDate">
-			<input type="submit" value="Submit" />
 		</div>
 	</div>
 
+	<script type="text/javascript" src="../JavaScript/modal.js"></script>
 	<script type="text/javascript" src="../JavaScript/employee.js"></script>
 	<script type="text/javascript" src="../JavaScript/sort-table.js"></script>
 </body>

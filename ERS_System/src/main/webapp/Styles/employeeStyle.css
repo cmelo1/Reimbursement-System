@@ -1,0 +1,408 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+/* BASIC */
+
+body {
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+}
+
+h2 {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display:inline-block;
+  margin: 40px 8px 10px 8px; 
+  color: black;
+}
+
+h3 {
+	font-family: "Verdana";
+	text-align: center;
+	font-size: 30px;
+	font-weight: 700;
+	display: inline-block;
+	margin: 40px 8px 10px 8px;
+	color: black;
+}
+
+.header h4 {
+	font-family: "Verdana";
+	text-align : center;
+	font-size: 30px;
+	font-weight: 700;
+	color: black;
+	text-align: center;
+}
+
+/* STRUCTURE */
+
+/* Employee */
+* {
+	box-sizing: border-box;
+}
+
+.topOptions {
+	position: relative;
+	float: right;
+}
+
+.topBanner{
+	padding: 15px;
+	border: 1.5px solid black;
+	border-spacing: 1px;
+	box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3), 0 50px 110px 0 rgba(0, 0, 0, 0.24);
+	background-color: #808000;
+}
+
+.newTickets{
+	float: left;
+	padding: 15px;
+	border: 1.5px solid black;
+	border-spacing: 1px;
+	background-color: #dadada;
+	box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3), 0 50px 110px 0 rgba(0, 0, 0, 0.24);
+	width: 50%;
+	min-height: 100vh;
+}
+
+.currentTickets{
+	float: left;
+	padding: 15px;
+	border: 1.5px solid black;
+	border-spacing: 1px;
+	background-color: #dadada;
+	box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3), 0 50px 110px 0 rgba(0, 0, 0, 0.24);
+	width: 50%;
+	min-height: 100vh;
+}
+
+[class*="col-"]{
+	float: left;
+	padding: 15px;
+	border: 1px solid black;
+	border-spacing: 25px;
+	background-color: #dadada;
+}
+
+.row::after{
+	content: "";
+	clear: both;
+	display: table;
+}
+
+/* Column widths*/
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+textarea{
+  width: 100%;
+  height: 1em;
+  padding: 3px;
+  transition: all 0.5s ease;
+  box-sizing: border-box;
+  border: 2px solid black;
+  background-color: #d8d8d8;
+  resize: none;
+  
+}
+
+textarea:focus {
+    height: 4em;
+}
+
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+#ticketAmount {
+	width: 150px;
+	height: 20px;
+	padding: 1px
+}
+
+#ticketDesc {
+	background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(255,255,255,1) 0%, rgba(226,226,226,0.7990546560421043) 100%);
+}
+
+/* Remove controls from Safari and Chrome */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none;
+  margin: 0; /* Removes leftover margin */
+}
+/* For Firefox */
+input[type='number'] {
+    -moz-appearance:textfield;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: grey;
+	opacity: 1; /* Firefox */
+	text-size: 15px;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+	color: grey;
+	opacity: 1;
+	text-size: 15px;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+	color: grey;
+	opacity: 1;
+	text-size: 15px;
+}
+
+#table1{
+	margin: auto;
+}
+
+#tablebody tr:hover {
+	background-color: #56baed;
+}
+
+/** Border stuff **/
+#tablebody{
+	box-shadow: 10px 10px gray;
+	padding: 10px;
+	text-align: center !important;
+}
+table.bottomBorder{
+	border-collapse: collapse;
+}	
+
+th, td, tr {
+	border-bottom: 1px solid black !important;
+	border-weight: 5px;
+}
+
+td {
+	border-bottom: 1px solid #ddd;
+}
+
+table.bottomBorder td,
+table.bottomBorder th {
+	border-bottom: 10px;
+	border-color: red;
+	padding: 10px;
+}
+
+table {
+	display: table;
+	border-collapse: separate;
+	border-spacing: 0px;
+	border-color: grey;
+	border-radius:; /* y blank?*/
+}
+
+<style>
+	.dropDown select {
+		border: 0 !important;  /*Removes border*/
+		-webkit-appearance: none;  /*Removes default chrome and safari style*/
+		-moz-appearance: none; /* Removes Default Firefox style*/
+        appearance:none;
+		background: #0088cc url(img/select-arrow.png) no-repeat 90% center;
+		width: 100px; /*Width of select dropdown to give space for arrow image*/
+		text-indent: 0.01px; /* Removes default arrow from firefox*/
+		text-overflow: "";  /*Removes default arrow from firefox*/ /*My custom style for fonts*/
+		color: #FFF;
+		border-radius: 15px;
+		padding: 5px;
+		box-shadow: inset 0 0 5px rgba(000,000,000, 0.5);
+	}
+</style>
+
+/* FORM TYPOGRAPHY*/
+
+input[type=button], input[type=submit], input[type=reset]  {
+  background-color: #56baed;
+  border: none;
+  color: white;
+  padding: 15px 80px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  font-size: 13px;
+  -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+  margin: 5px 20px 40px 20px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
+  background-color: #39ace7;
+}
+
+input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
+  -moz-transform: scale(0.95);
+  -webkit-transform: scale(0.95);
+  -o-transform: scale(0.95);
+  -ms-transform: scale(0.95);
+  transform: scale(0.95);
+}
+
+input[type=text] {
+  background-color: #f6f6f6;
+  border: none;
+  color: #0d0d0d;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: 85%;
+  border: 2px solid #f6f6f6;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  -webkit-border-radius: 5px 5px 5px 5px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+input[type=text]:focus {
+  background-color: #fff;
+  border-bottom: 2px solid #5fbae9;
+}
+
+input[type=text]:placeholder {
+  color: #cccccc;
+}
+
+
+
+/* ANIMATIONS */
+
+/* Simple CSS3 Fade-in-down Animation */
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, -100%, 0);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+/* Simple CSS3 Fade-in Animation */
+@-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
+
+.fadeIn {
+  opacity:0;
+  -webkit-animation:fadeIn ease-in 1;
+  -moz-animation:fadeIn ease-in 1;
+  animation:fadeIn ease-in 1;
+
+  -webkit-animation-fill-mode:forwards;
+  -moz-animation-fill-mode:forwards;
+  animation-fill-mode:forwards;
+
+  -webkit-animation-duration:1s;
+  -moz-animation-duration:1s;
+  animation-duration:1s;
+}
+
+.fadeIn.first {
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+
+.fadeIn.second {
+  -webkit-animation-delay: 0.6s;
+  -moz-animation-delay: 0.6s;
+  animation-delay: 0.6s;
+}
+
+.fadeIn.third {
+  -webkit-animation-delay: 0.8s;
+  -moz-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+}
+
+.fadeIn.fourth {
+  -webkit-animation-delay: 1s;
+  -moz-animation-delay: 1s;
+  animation-delay: 1s;
+}
+
+/* Simple CSS3 Fade-in Animation */
+.underlineHover:after {
+  display: block;
+  left: 0;
+  bottom: -10px;
+  width: 0;
+  height: 2px;
+  background-color: #56baed;
+  content: "";
+  transition: width 0.2s;
+}
+
+.underlineHover:hover {
+  color: #0d0d0d;
+}
+
+.underlineHover:hover:after{
+  width: 100%;
+}
+
+/* OTHERS */
+
+*:focus {
+    outline: none;
+} 
+
+#icon {
+  width:60%;
+}
+
+* {
+  box-sizing: border-box;
+}
