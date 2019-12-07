@@ -5,7 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 
 import org.apache.log4j.net.SyslogAppender;
 
@@ -187,16 +189,19 @@ public class TicketDAO implements TicketDAOInterface {
 	}
 	
 	public void approveTicket(String x) {
+		Date date= new Date();
+		Timestamp current_date = new Timestamp(date.getTime());
+		
 		try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password)) {
 			PreparedStatement ps = conn.prepareStatement(
-"UPDATE ERS_REIMBURSEMENT SET REIMB_STATUS_ID = 141 WHERE REIMB_ID =?");
+"UPDATE ERS_REIMBURSEMENT SET REIMB_STATUS_ID = 141,"
++ "REIMB_RESOLVED=?,REIMB_RESOLVER=5400 WHERE REIMB_ID =?");
 			int y = Integer.valueOf(x);
-			ps.setInt(1, y);
+			ps.setTimestamp(1, current_date);
+			ps.setInt(2, y);
 			ps.executeUpdate();
 			commit();
-			
-		
-						
+							
 		} catch (SQLException e) {
 			System.out.println("Statement Failed! ApproveTicket");
 			e.printStackTrace();
@@ -204,13 +209,18 @@ public class TicketDAO implements TicketDAOInterface {
 
 	}
 	public void denyTicket(String x) {
+		Date date= new Date();
+		Timestamp current_date = new Timestamp(date.getTime());
 		try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password)) {
 			PreparedStatement ps = conn.prepareStatement(
-"UPDATE ERS_REIMBURSEMENT SET REIMB_STATUS_ID = 142 WHERE REIMB_ID =?");
+"UPDATE ERS_REIMBURSEMENT SET REIMB_STATUS_ID = 142,"
++ "REIMB_RESOLVED=?,REIMB_RESOLVER=5400 WHERE REIMB_ID =?");
 			System.out.println("INSIDE DENY TICKET");
 			int y = Integer.valueOf(x);
-			ps.setInt(1, y);
+			ps.setTimestamp(1, current_date);
+			ps.setInt(2, y);
 			ps.executeUpdate();
+			commit();
 					
 		} catch (SQLException e) {
 			System.out.println("Statement Failed! denyTicket");
