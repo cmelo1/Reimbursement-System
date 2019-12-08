@@ -6,7 +6,7 @@
 
 window.onbeforeunload = function(e) {
  
-	document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+	document.getElementById("username").innerHTML = localStorage.getItem("unloadUser");
 };
 
 
@@ -60,22 +60,46 @@ function setTableValues(ticketList){
 	html = "";
 	 // Loop through array and add table cells
 	  for (var i=0; i<ticketList.length; i++) {
+		  
+		  let date = new Date(ticketList[i].submit_date);
+			let rdate = new Date(ticketList[i].resolve_date);
+			// Insert row based on parameters.
+			
+			let status = ticketList[i].status_id;
+			switch(status){
+			case 140:
+				status = "PENDING";
+				break;
+			case 141: 
+				status = "APPROVED";
+				break;
+			case 142:
+				status = "DENIED";
+				break;
+			}
+			
+			let typeid = ticketList[i].type_id;
+			switch(typeid){
+			
+			case 140:
+				typeid = "LODGING";
+				break;
+			case 141: 
+				typeid = "TRAVEL";
+				break;
+			case 142:
+				typeid = "FOOD";
+				break;
+			case 143:
+				typeid = "OTHER";
+				break;
+			}
 		
-		  let date = new Date (ticketList[i].submit_date);
-		  //Insert row based on parameters.
-		  //"<tr id=" + "\"row"+ i +"\">" + "<td>"  + ticketList[i].ticket_Id +
-	
-
 		html += "<tr> <td>" + ticketList[i].ticket_Id + "</td>"
 	    +"<td> $" + ticketList[i].amount + "</td>"
-	    +"<td>" + date.getMonth()+"/"+date.getDay()+"/"+date.getFullYear() + "</td>"
-	    //+"<td>" + ticketList[i].resolve_date + "</td>"
-	    //+"<td>" + ticketList[i].description + "</td>"
-	    //+"<td>" + ticketList[i].receipt + "</td>"
-	    //+"<td>" + ticketList[i].author + "</td>"
-	    //+"<td>" + ticketList[i].resolver + "</td>"
-	    +"<td>" + ticketList[i].status_id + "</td>"
-	    +"<td>" + ticketList[i].type_id + "</td>"
+	    +"<td>" + date.getMonth()+"/"+date.getDay()+"/"+date.getFullYear() + "</td>";
+	    +"<td>" + status + "</td>"
+	    +"<td>" + typeid + "</td>"
 	    +"</tr>" ;
 	    //https://stackoverflow.com/questions/34880415/adding-id-to-html-table-row-in-javascript/34880611
 	    document.getElementById("tablebody").innerHTML = html;
@@ -86,8 +110,6 @@ function setTableValues(ticketList){
 	  let today = new Date().toISOString().substr(0, 10);
 	  document.querySelector("#autoToday").value = today;
 	
-	  
-
 } //this will manipulate the elements on the next page.
 
 //new function
@@ -127,17 +149,53 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
+let date = new Date(ticketList[i].submit_date);
+let rdate = new Date(ticketList[i].resolve_date);
+// Insert row based on parameters.
+
+//Convert Number to String
+let status = ticketList[i].status_id;
+switch(status){
+case 140:
+	status = "PENDING";
+	break;
+case 141: 
+	status = "APPROVED";
+	break;
+case 142:
+	status = "DENIED";
+	break;
+}
+
+let typeid = ticketList[i].type_id;
+switch(typeid){
+
+case 140:
+	typeid = "LODGING";
+	break;
+case 141: 
+	typeid = "TRAVEL";
+	break;
+case 142:
+	typeid = "FOOD";
+	break;
+case 143:
+	typeid = "OTHER";
+	break;
+}
+
+
 	let date = new Date (row.submit_date);
 	document.getElementById("employeeNameId").innerHTML = "Employee ID: <i>" + row.author +"</i>" ;
 	document.getElementById("amountID").innerHTML = "Amount:<i> $" + row.amount;
 	document.getElementById("dateSubmittedId").innerHTML = "Date Submitted: <i> " + date.getMonth()+"/"+date.getDay()+"/"+date.getFullYear() +"</i>";
-	document.getElementById("dateResolvedId").innerHTML = "Date Resolved: <i> " + row.resolve_date +"</i>";
+	document.getElementById("dateResolvedId").innerHTML = "Date Resolved: <i> " + rdate.getMonth()+"/"+rdate.getDay()+"/"+rdate.getFullYear() +"</i>";
 	document.getElementById("descriptionId").innerHTML = "Description: <i> " + row.description +"</i>";
 	document.getElementById("receiptID").innerHTML = "Receipt: <i> " + row.receipt +"</i>";
 	document.getElementById("authorId").innerHTML = "Author: <i> " + row.author +"</i>";
 	document.getElementById("resolverId").innerHTML = "Resolver: <i> " + row.resolver +"</i>";
-	document.getElementById("statusId").innerHTML = "Status: <i> " + row.status_id +"</i>";
-	document.getElementById("expenseTypeId").innerHTML = "Expense Type: <i> " + row.type_id +"</i>";
+	document.getElementById("statusId").innerHTML = "Status: <i> " + status +"</i>";
+	document.getElementById("expenseTypeId").innerHTML = "Expense Type: <i> " + type_id +"</i>";
 	
 	modal.style.display = "block";
 
