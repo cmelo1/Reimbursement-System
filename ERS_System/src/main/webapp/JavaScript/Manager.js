@@ -1,6 +1,10 @@
 /**
  * 
  */
+window.onbeforeunload = function(e) {
+ 
+	document.getElementById("username").innerHTML = localStorage.getItem("unloadUser");
+};
 
 window.onload = function(){
 	getUserInfo();
@@ -16,6 +20,10 @@ function getUserInfo(){
 		if(xhttp.readyState == 4 && xhttp.status == 200){
 			let user = JSON.parse(xhttp.responseText);
 			setValues(user); //Call set values function defined below
+			if(user!= undefined){
+				localStorage.setItem("unloadUser", user);
+			}
+			
 		}
 	}
 
@@ -25,7 +33,6 @@ xhttp.send();
 
 function setValues(user){
 	document.getElementById("username").innerHTML = "User's username is" + user.username; 
-	document.getElementById("password").innerHTML = "User's password is" + user.password;
 	
 }
 
@@ -250,10 +257,7 @@ function approveTicketRequest(row){
 	let xhttpReq = new XMLHttpRequest();
 	xhttpReq.onreadystatechange = function(){
 		if(xhttpReq.readyState == 4 && xhttpReq.status == 200){
-			//let user = JSON.parse(xhttp.responseText); 
 			getTicketInfo();
-			let user = localStorage.getItem("unloadUser");
-			setValues(user); 
 		}
 	}
 	let id = row.ticket_Id;
