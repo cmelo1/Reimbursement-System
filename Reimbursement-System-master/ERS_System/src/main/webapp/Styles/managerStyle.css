@@ -1,0 +1,166 @@
+@charset "ISO-8859-1";
+
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+/* BASIC */
+
+html {
+  background-color: white
+}
+
+#mainbody {
+	background-color: white;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+}
+
+
+h2 {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  display:inline-block;
+  margin: 40px 8px 10px 8px; 
+  color: #000000;
+}
+
+/* STRUCTURE */
+
+/* Manager */
+
+.button {
+	background-color: #1c87c9;
+	border: none;
+	color: white;
+	padding: 10px 7px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 10px;
+	margin: 2px 1px;
+	cursor: pointer;
+	postion: centered;
+}
+
+.currentTickets{
+	padding: 15px;
+	border: 3px solid #808080;
+	box-sizing: border-box;
+	border-spacing: 25px;
+	background-color: white;
+	min-height: 100vh;
+	postion: centered;
+}
+
+.topBanner{
+	background-color: white;
+}
+
+[class*="col-"]{
+	padding: 15px;
+	border-spacing: 25px;
+}
+
+.row::after{
+	content: "";
+	clear: both;
+	display: table;
+}
+
+/* Column widths*/
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+
+#table1 tr:nth-child(even) {
+	background-color: #FFE3D8;
+}
+
+#table1 tr:hover {
+	background-color: #ddd;
+}
+
+#table1 th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #F84600;
+	color: white;
+}
+
+#table1 tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;     
+}
+
+#table1 tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+#table1 tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+}
+
+#table1 tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+}
+
+#table1 {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
+	box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3), 0 50px 110px 0 rgba(0, 0, 0, 0.24);
+	background-color: ;
+	
+}
+
+#table1 td, #table1 th {
+    border-collapse-right: 1px solid #ddd;
+    border-collapse-left: 1px solid #ddd;
+    border-collapse-top: 1px solid #ddd;
+    border-collapse-bottom: 1px solid #ddd;
+    border-collapse: collapse;
+	padding: 8px;
+}
+/* TABS */
+h2.inactive {
+  color: #cccccc;
+}
+
+h2.active {
+  color: #0d0d0d;
+  border-bottom: 2px solid #5fbae9;
+}
+
+/* FORM TYPOGRAPHY*/
+
+
+/* ANIMATIONS */
+
+
+/* OTHERS */
+
+
+#searchInput {
+  background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+  background-position: 10px 12px; /* Position the search icon */
+  background-repeat: no-repeat; /* Do not repeat the icon image */
+  width: 100%; /* Full-width */
+  font-size: 16px; /* Increase font-size */
+  padding: 12px 20px 12px 40px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
