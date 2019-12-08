@@ -1,0 +1,5 @@
+2019-12-08 18:19:24 INFO  TicketDAO:150 - ERS Ticket table has been viewed by employee ID :5100
+2019-12-08 18:33:21 INFO  TicketDAO:150 - ERS Ticket table has been viewed by employee ID :5100
+2019-12-08 18:34:11 INFO  TicketDAO:115 - ERS Tickets have been selected and retrieved.
+2019-12-08 18:34:20 INFO  TicketDAO:222 - ERS Ticket 10690 has been selected and approved.
+2019-12-08 18:34:21 INFO  TicketDAO:115 - ERS Tickets have been selected and retrieved.

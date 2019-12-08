@@ -15,7 +15,7 @@ private double ticket_amount;
 private Timestamp submit_date; //getters/setters might have to convert between SQL time if its different.
 private Timestamp resolve_date;
 private String	description;
-private Blob receipt; //wtf is a blob lmao??
+private Blob receipt; // blob lmao??
 private int author;
 private int resolver;
 private int status_id;

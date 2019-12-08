@@ -22,9 +22,10 @@ public class TicketController { //NEEDS TO BE WORKED ON LOL
 		ERS_User EmployeeUser = (ERS_User)request.getSession().getAttribute("CurrentUser");
 		
 		TicketDAO ticketDAO = new TicketDAO();
-		Date date= new Date();
 		int ticket_Id = 0;
 		double ticket_amount = Double.parseDouble(request.getParameter("ticketAmount"));
+		
+		Date date= new Date();
 		Timestamp current_date = new Timestamp(date.getTime());
 		Timestamp resolve_date=null;
 		String ticket_description = request.getParameter("ticketDesc");
@@ -76,7 +77,6 @@ public class TicketController { //NEEDS TO BE WORKED ON LOL
 		ERS_User EmployeeUser = (ERS_User)request.getSession().getAttribute("CurrentUser");
 		TicketDAO tick = new TicketDAO();
 		ERS_Ticket[] ticketList = tick.selectByEmployee(EmployeeUser);
-		
 		try {
 			response.getWriter().write(new ObjectMapper().writeValueAsString(ticketList)); //returning an array 
 		} catch (JsonProcessingException e) {

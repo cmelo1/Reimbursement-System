@@ -1,6 +1,9 @@
 package com.reimbursement.dao;
 
 import java.sql.Connection;
+
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,12 +14,15 @@ import java.util.Date;
 
 import org.apache.log4j.net.SyslogAppender;
 
+
 import com.reimbursement.model.*;
 
 public class TicketDAO implements TicketDAOInterface {
 	private static String db_url = "jdbc:oracle:thin:@db1028.cspirgmhfavi.us-east-2.rds.amazonaws.com:1521:orcl";
 	private static String db_username = "CDD";
 	private static String db_password = "p4ssw0rd";
+	final static Logger Loggy = Logger.getLogger(TicketDAO.class);
+
 	
 
 	@Override
@@ -42,7 +48,7 @@ public class TicketDAO implements TicketDAOInterface {
 			System.out.println("Connection Failed! InsertTicket");
 			e.printStackTrace();
 		}
-
+		Loggy.info("ERS Tickethas been inserted by user: " + x.getAuthor());
 	}
 
 	@Override
@@ -72,11 +78,13 @@ public class TicketDAO implements TicketDAOInterface {
 			System.out.println("Connection Failed! SelectTicket");
 			e.printStackTrace();
 		}
+		Loggy.info("ERS Ticket " + x + " has been selected and retrieved.");
 		return tick;
 		
 	}
 
 	public ERS_Ticket[] selectAllTickets() { 
+		BasicConfigurator.configure();
 		ArrayList<ERS_Ticket> ticketList = new ArrayList<ERS_Ticket>();
 		try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password)) {
 
@@ -104,11 +112,14 @@ public class TicketDAO implements TicketDAOInterface {
 		for(int i = 0; i<ticketList.size();i++) {
 			ticketArray[i] = ticketList.get(i);
 		}
+		Loggy.info("ERS Tickets have been selected and retrieved.");
 		return ticketArray;
+		
 	}
 
 	
 	public ERS_Ticket[] selectByEmployee(ERS_User x) { 
+		BasicConfigurator.configure();
 		ArrayList<ERS_Ticket> ticketList = new ArrayList<ERS_Ticket>();
 		try (Connection conn = DriverManager.getConnection(db_url, db_username, db_password)) {
 
@@ -136,7 +147,9 @@ public class TicketDAO implements TicketDAOInterface {
 		for(int i = 0; i<ticketList.size();i++) {
 			ticketArray[i] = ticketList.get(i);
 		}
+		Loggy.info("ERS Ticket table has been viewed by employee ID :" + x.getUser_id());
 		return ticketArray;
+		
 	}
 
 
@@ -206,6 +219,7 @@ public class TicketDAO implements TicketDAOInterface {
 			System.out.println("Statement Failed! ApproveTicket");
 			e.printStackTrace();
 		}
+		Loggy.info("ERS Ticket " + x + " has been selected and approved.");
 
 	}
 	public void denyTicket(String x) {
@@ -226,6 +240,7 @@ public class TicketDAO implements TicketDAOInterface {
 			System.out.println("Statement Failed! denyTicket");
 			e.printStackTrace();
 		}
+		Loggy.info("ERS Ticket " + x + " has been selected and denied.");
 
 	}
 
