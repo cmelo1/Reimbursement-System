@@ -97,7 +97,7 @@ function setTableValues(ticketList){
 		
 		html += "<tr> <td>" + ticketList[i].ticket_Id + "</td>"
 	    +"<td> $" + ticketList[i].amount + "</td>"
-	    +"<td>" + date.getMonth()+"/"+date.getDay()+"/"+date.getFullYear() + "</td>"
+	    +"<td>" + (date.getMonth() + 1) +"/"+date.getDay()+"/"+date.getFullYear() + "</td>"
 	    +"<td>" + status + "</td>"
 	    +"<td>" + typeid + "</td>"
 	    +"</tr>" ;
@@ -146,7 +146,9 @@ var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
 let date = new Date(row.submit_date);
+
 let rdate = new Date(row.resolve_date);
+
 // Insert row based on parameters.
 
 //Convert Number to String
@@ -181,20 +183,25 @@ case 143:
 }
 
 let resolver = row.resolver;
+console.log(resolver);
+
 if(resolver == 0){
-	
-	resolver = "-";
-	
+	document.getElementById("dateResolvedId").innerHTML = "Date Resolved: <i> PENDING </i>";
+	resolver = " -";
 }
+else if (resolver!=0){
+	document.getElementById("dateResolvedId").innerHTML = "Date Resolved: <i> " + (rdate.getMonth()+1)+"/"+rdate.getDay()+"/"+rdate.getFullYear() +"</i>";
+}
+
 
 	document.getElementById("employeeNameId").innerHTML = "Employee ID: <i>" + row.author +"</i>" ;
 	document.getElementById("amountID").innerHTML = "Amount:<i> $" + row.amount;
-	document.getElementById("dateSubmittedId").innerHTML = "Date Submitted: <i> " + date.getMonth()+"/"+date.getDay()+"/"+date.getFullYear() +"</i>";
-	document.getElementById("dateResolvedId").innerHTML = "Date Resolved: <i> " + rdate.getMonth()+"/"+rdate.getDay()+"/"+rdate.getFullYear() +"</i>";
-	document.getElementById("descriptionId").innerHTML = "Description: <i> " + row.description +"</i>";
+	document.getElementById("dateSubmittedId").innerHTML = "Date Submitted: <i> " + (date.getMonth()+1)+"/"+date.getDay()+"/"+date.getFullYear() +"</i>";
+	//document.getElementById("dateResolvedId").innerHTML = "Date Resolved: <i> " + rdate.getMonth()+"/"+rdate.getDay()+"/"+rdate.getFullYear() +"</i>";
+	document.getElementById("descriptionId").innerHTML = "Description: <i> \"" + row.description +"\"</i>";
 	document.getElementById("receiptID").innerHTML = "Receipt: <i> " + row.receipt +"</i>";
-	document.getElementById("authorId").innerHTML = "Author: <i> " + row.author +"</i>";
-	document.getElementById("resolverId").innerHTML = "Resolver: <i> " + resolver +"</i>";
+	document.getElementById("authorId").innerHTML = "Author ID: <i> " + row.author +"</i>";
+	document.getElementById("resolverId").innerHTML = "Resolver ID: <i> " + resolver +"</i>";
 	document.getElementById("statusId").innerHTML = "Status: <i> " + status +"</i>";
 	document.getElementById("expenseTypeId").innerHTML = "Expense Type: <i> " + typeid +"</i>";
 	

@@ -102,17 +102,16 @@ function setTableValues(ticketList) {
 		}
 		
 		let resolver = ticketList[i].resolver;
+		let tempResolveDate = "<td>" + rdate.getMonth() + "/" + rdate.getDay() + "/" + rdate.getFullYear() + "</td>";
 		if(resolver == 0){
-		
-			resolver = "-";
-			
+			tempResolveDate = "<td> PENDING </td>";
+			resolver = " -";
 		}
 
 		html += "<tr> <td>" + ticketList[i].ticket_Id + "</td>" + "<td>"
 				+ ticketList[i].amount + "</td>" + "<td>" + date.getMonth()
 				+ "/" + date.getDay() + "/" + date.getFullYear() + "</td>"
-				+ "<td>" + rdate.getMonth()
-				+ "/" + rdate.getDay() + "/" + rdate.getFullYear() + "</td>" + "<td>"
+				+ tempResolveDate + "<td>"
 				+ ticketList[i].description + "</td>" + "<td>"
 				+ ticketList[i].receipt + "</td>" + "<td>"
 				+ ticketList[i].author + "</td>" + "<td>"
@@ -187,9 +186,16 @@ function modalStuff(row) {
 		typeid = "OTHER";
 		break;
 	}
+	
 	let resolver = row.resolver;
+	let rdate = new Date(row.resolve_date);
+	
 	if(resolver == 0){
-		resolver = "-";
+		document.getElementById("dateResolvedId").innerHTML = "Date Resolved: <i> PENDING </i>";
+		resolver = " -";
+	}
+	else if (resolver!=0){
+		document.getElementById("dateResolvedId").innerHTML = "Date Resolved: <i> " + (rdate.getMonth()+1)+"/"+rdate.getDay()+"/"+rdate.getFullYear() +"</i>";
 	}
 	
 	
@@ -205,8 +211,8 @@ function modalStuff(row) {
 			+ "/"
 			+ date.getFullYear()
 			+ "</i>";
-	document.getElementById("dateResolvedId").innerHTML = "Date Resolved: <i> "
-			+ row.resolve_date + "</i>";
+	//document.getElementById("dateResolvedId").innerHTML = "Date Resolved: <i> "
+	//		+ row.resolve_date + "</i>";
 	document.getElementById("descriptionId").innerHTML = "Description: <i> "
 			+ row.description + "</i>";
 	document.getElementById("receiptID").innerHTML = "Receipt: <i> "
