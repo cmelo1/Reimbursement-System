@@ -93,6 +93,13 @@ function setTableValues(ticketList) {
 			typeid = "OTHER";
 			break;
 		}
+		
+		let resolver = ticketList[i].resolver;
+		if(resolver == 0){
+		
+			resolver = "-";
+			
+		}
 
 		html += "<tr> <td>" + ticketList[i].ticket_Id + "</td>" + "<td>"
 				+ ticketList[i].amount + "</td>" + "<td>" + date.getMonth()
@@ -102,7 +109,7 @@ function setTableValues(ticketList) {
 				+ ticketList[i].description + "</td>" + "<td>"
 				+ ticketList[i].receipt + "</td>" + "<td>"
 				+ ticketList[i].author + "</td>" + "<td>"
-				+ ticketList[i].resolver + "</td>" + "<td>"
+				+ resolver + "</td>" + "<td>"
 				+ status + "</td>" + "<td>" + typeid + "</td>" + "</tr>";
 		// https://stackoverflow.com/questions/34880415/adding-id-to-html-table-row-in-javascript/34880611
 		document.getElementById("tablebody").innerHTML = html;
@@ -144,6 +151,7 @@ function modalStuff(row) {
 
 	// When the user clicks on the button, open the modal
 	
+	//convert number to string.
 	let status = row.status_id;
 	switch(status){
 	case 140:
@@ -172,6 +180,10 @@ function modalStuff(row) {
 		typeid = "OTHER";
 		break;
 	}
+	let resolver = row.resolver;
+	if(resolver == 0){
+		resolver = "-";
+	}
 	
 	
 	
@@ -195,7 +207,7 @@ function modalStuff(row) {
 	document.getElementById("authorId").innerHTML = "Author: <i> " + row.author
 			+ "</i>";
 	document.getElementById("resolverId").innerHTML = "Resolver: <i> "
-			+ row.resolver + "</i>";
+			+ resolver + "</i>";
 	
 	document.getElementById("statusId").innerHTML = "Status: <i> "
 			+ status + "</i>";

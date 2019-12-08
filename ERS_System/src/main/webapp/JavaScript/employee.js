@@ -97,7 +97,7 @@ function setTableValues(ticketList){
 		
 		html += "<tr> <td>" + ticketList[i].ticket_Id + "</td>"
 	    +"<td> $" + ticketList[i].amount + "</td>"
-	    +"<td>" + date.getMonth()+"/"+date.getDay()+"/"+date.getFullYear() + "</td>";
+	    +"<td>" + date.getMonth()+"/"+date.getDay()+"/"+date.getFullYear() + "</td>"
 	    +"<td>" + status + "</td>"
 	    +"<td>" + typeid + "</td>"
 	    +"</tr>" ;
@@ -107,8 +107,7 @@ function setTableValues(ticketList){
 
 	  }
 	  addRowHandlers(ticketList);
-	  let today = new Date().toISOString().substr(0, 10);
-	  document.querySelector("#autoToday").value = today;
+
 	
 } //this will manipulate the elements on the next page.
 
@@ -122,11 +121,8 @@ function addRowHandlers(arrayobj) {
         var createClickHandler = 
             function(row) 
             {
-                return function() { 
-                          
-                                       
-                                        modalStuff(passObj);
-                         
+                return function() {                                                           
+                                        modalStuff(passObj);                        
                                  };
             };
 
@@ -149,12 +145,12 @@ var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks on the button, open the modal
-let date = new Date(ticketList[i].submit_date);
-let rdate = new Date(ticketList[i].resolve_date);
+let date = new Date(row.submit_date);
+let rdate = new Date(row.resolve_date);
 // Insert row based on parameters.
 
 //Convert Number to String
-let status = ticketList[i].status_id;
+let status = row.status_id;
 switch(status){
 case 140:
 	status = "PENDING";
@@ -167,7 +163,7 @@ case 142:
 	break;
 }
 
-let typeid = ticketList[i].type_id;
+let typeid = row.type_id;
 switch(typeid){
 
 case 140:
@@ -184,8 +180,13 @@ case 143:
 	break;
 }
 
+let resolver = row.resolver;
+if(resolver == 0){
+	
+	resolver = "-";
+	
+}
 
-	let date = new Date (row.submit_date);
 	document.getElementById("employeeNameId").innerHTML = "Employee ID: <i>" + row.author +"</i>" ;
 	document.getElementById("amountID").innerHTML = "Amount:<i> $" + row.amount;
 	document.getElementById("dateSubmittedId").innerHTML = "Date Submitted: <i> " + date.getMonth()+"/"+date.getDay()+"/"+date.getFullYear() +"</i>";
@@ -193,9 +194,9 @@ case 143:
 	document.getElementById("descriptionId").innerHTML = "Description: <i> " + row.description +"</i>";
 	document.getElementById("receiptID").innerHTML = "Receipt: <i> " + row.receipt +"</i>";
 	document.getElementById("authorId").innerHTML = "Author: <i> " + row.author +"</i>";
-	document.getElementById("resolverId").innerHTML = "Resolver: <i> " + row.resolver +"</i>";
+	document.getElementById("resolverId").innerHTML = "Resolver: <i> " + resolver +"</i>";
 	document.getElementById("statusId").innerHTML = "Status: <i> " + status +"</i>";
-	document.getElementById("expenseTypeId").innerHTML = "Expense Type: <i> " + type_id +"</i>";
+	document.getElementById("expenseTypeId").innerHTML = "Expense Type: <i> " + typeid +"</i>";
 	
 	modal.style.display = "block";
 
