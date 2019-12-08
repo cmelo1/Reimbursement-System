@@ -5,11 +5,11 @@
 /* BASIC */
 
 html {
-  background-color: rgba(248,70,0,0.5) 
+  background-color: white
 }
 
 #mainbody {
-	background-color: #F84600;
+	background-color: white;
 }
 
 body {
@@ -31,9 +31,6 @@ h2 {
 /* STRUCTURE */
 
 /* Manager */
-* {
-	box-sizing: border-box;
-}
 
 .button {
 	background-color: #1c87c9;
@@ -54,18 +51,17 @@ h2 {
 	border: 3px solid #808080;
 	box-sizing: border-box;
 	border-spacing: 25px;
-	background-color: #c1c1c1;
+	background-color: white;
 	min-height: 100vh;
 	postion: centered;
 }
 
 .topBanner{
-	background-color: #dadada;
+	background-color: white;
 }
 
 [class*="col-"]{
 	padding: 15px;
-	border: 1px solid black;
 	border-spacing: 25px;
 }
 
@@ -89,44 +85,56 @@ h2 {
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
 
-#tablebody tr:hover{
-          background-color: #56baed;
-	}
-	
-/** Border stuff **/
-#tablebody{
-	box-shadow: 10px 10px gray;
-	padding: 10px;
-	text-align: center !important;
+
+#table1 tr:nth-child(even) {
+	background-color: #FFE3D8;
 }
-table.bottomBorder{
+
+#table1 tr:hover {
+	background-color: #ddd;
+}
+
+#table1 th {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #F84600;
+	color: white;
+}
+
+#table1 tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;     
+}
+
+#table1 tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+#table1 tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+}
+
+#table1 tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+}
+
+#table1 {
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
 	border-collapse: collapse;
-}	
-
-th, td, tr {
-	border-bottom: 1px solid black !important;
-	border-weight: 5px;
+	width: 100%;
+	box-shadow: 0 30px 60px 0 rgba(0, 0, 0, 0.3), 0 50px 110px 0 rgba(0, 0, 0, 0.24);
+	background-color: ;
+	
 }
 
-td {
-	border-bottom: 1px solid #ddd;
+#table1 td, #table1 th {
+    border-collapse-right: 1px solid #ddd;
+    border-collapse-left: 1px solid #ddd;
+    border-collapse-top: 1px solid #ddd;
+    border-collapse-bottom: 1px solid #ddd;
+    border-collapse: collapse;
+	padding: 8px;
 }
-
-table.bottomBorder td,
-table.bottomBorder th {
-	border-bottom: 10px;
-	border-color: red;
-	padding: 10px;
-}
-
-table {
-	display: table;
-	border-collapse: separate;
-	border-spacing: 0px;
-	border-color: grey;
-	border-radius:; /* y blank?*/
-}
-
 /* TABS */
 h2.inactive {
   color: #cccccc;
@@ -144,8 +152,6 @@ h2.active {
 
 
 /* OTHERS */
-
-
 
 
 #searchInput {

@@ -273,10 +273,7 @@ function denyTicketRequest(row){
 	let xhttpReq = new XMLHttpRequest();
 	xhttpReq.onreadystatechange = function(){
 		if(xhttpReq.readyState == 4 && xhttpReq.status == 200){
-			//let user = JSON.parse(xhttp.responseText); 
-			getTicketInfo();
-			let user = localStorage.getItem("unloadUser");
-			setValues(user); 
+			getTicketInfo();	
 		}
 	}
 	let id = row.ticket_Id;

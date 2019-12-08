@@ -65,7 +65,6 @@ public class TicketController { //NEEDS TO BE WORKED ON LOL
 		
 		ticketDAO.insertTicket(newTicket);
 		request.getSession().setAttribute("CurrentUser",EmployeeUser);
-		//return "/HTML/employee.do";
 		return "/HTML/employee.html";
 		
 	}
