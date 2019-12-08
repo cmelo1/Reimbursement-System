@@ -97,7 +97,7 @@ function setTableValues(ticketList){
 		
 		html += "<tr> <td>" + ticketList[i].ticket_Id + "</td>"
 	    +"<td> $" + ticketList[i].amount + "</td>"
-	    +"<td>" + (date.getMonth() + 1) +"/"+date.getDay()+"/"+date.getFullYear() + "</td>"
+	    +"<td>" + (date.getMonth() + 1) +"/"+date.getDate()+"/"+date.getFullYear() + "</td>"
 	    +"<td>" + status + "</td>"
 	    +"<td>" + typeid + "</td>"
 	    +"</tr>" ;
@@ -190,13 +190,13 @@ if(resolver == 0){
 	resolver = " -";
 }
 else if (resolver!=0){
-	document.getElementById("dateResolvedId").innerHTML = "Date Resolved: <i> " + (rdate.getMonth()+1)+"/"+rdate.getDay()+"/"+rdate.getFullYear() +"</i>";
+	document.getElementById("dateResolvedId").innerHTML = "Date Resolved: <i> " + (rdate.getMonth()+1)+"/"+rdate.getDate()+"/"+rdate.getFullYear() +"</i>";
 }
 
 
 	document.getElementById("employeeNameId").innerHTML = "Employee ID: <i>" + row.author +"</i>" ;
 	document.getElementById("amountID").innerHTML = "Amount:<i> $" + row.amount;
-	document.getElementById("dateSubmittedId").innerHTML = "Date Submitted: <i> " + (date.getMonth()+1)+"/"+date.getDay()+"/"+date.getFullYear() +"</i>";
+	document.getElementById("dateSubmittedId").innerHTML = "Date Submitted: <i> " + (date.getMonth()+1)+"/"+date.getDate()+"/"+date.getFullYear() +"</i>";
 	//document.getElementById("dateResolvedId").innerHTML = "Date Resolved: <i> " + rdate.getMonth()+"/"+rdate.getDay()+"/"+rdate.getFullYear() +"</i>";
 	document.getElementById("descriptionId").innerHTML = "Description: <i> \"" + row.description +"\"</i>";
 	document.getElementById("receiptID").innerHTML = "Receipt: <i> " + row.receipt +"</i>";
