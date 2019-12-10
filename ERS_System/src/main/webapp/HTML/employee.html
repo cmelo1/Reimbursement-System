@@ -11,11 +11,12 @@
 <!-- Grid Layout -->
 <style>
 </style>
-<body style="background: linear-gradient(to bottom, #F84600, #a0a0a0)">
-	<div class="row">
+<body>
+	<div class="row" id="topRow">
 		<div class="col-12 topBanner">
+		<img src="revature_1_40.png" id="topLogo">
 			<div class="topOptions">
-				<div id="username">Unfilled Username</div>
+				<div id="username"></div>
 				<!--  Begin Modal -->
 				<a href="index.html" class="button" id="logout">Log Out</a>
 			</div>
@@ -99,7 +100,6 @@
 				<textarea name="ticketDesc" placeholder="Enter Ticket Description (Required)" name="ticketDesc" id="ticketDesc" rows="10" cols="60"
 					maxLength="100" required></textarea>
 					
-				<br> Date: <input id="autoToday" type="date" name="subDate">
 				<input type="submit" value="Submit" />
 			</form>
 		</div>

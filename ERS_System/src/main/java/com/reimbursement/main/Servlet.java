@@ -12,20 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class Servlet
  */
-public class Servlet extends HttpServlet {
+	public class Servlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestHelper.process(request, response);
 	}
-
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String targetURL = RequestHelper.process(request, response);
 		request.getRequestDispatcher(targetURL).forward(request, response);
-		// Chose to respond with a forward for every POST request.
 	}
-
 	protected void doPut(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		RequestHelper.process(request, response);

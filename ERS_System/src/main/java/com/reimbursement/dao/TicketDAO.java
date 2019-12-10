@@ -38,10 +38,8 @@ public class TicketDAO implements TicketDAOInterface {
 			ps.setInt(6,x.getAuthor());
 			ps.setInt(7,x.getResolver());
 			ps.setInt(8,x.getStatus_id());
-			ps.setInt(9,x.getType_id());
-			
+			ps.setInt(9,x.getType_id());			
 			ps.executeUpdate();
-			
 			System.out.println("Success!");
 
 		} catch (SQLException e) {
@@ -58,7 +56,6 @@ public class TicketDAO implements TicketDAOInterface {
 
 			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ERS_REIMBURSEMENT WHERE REIMB_ID=?");
 			ps.setInt(1, x);
-			
 			ResultSet rs = ps.executeQuery();
 			System.out.println(rs.getDouble(2));
 			while (rs.next()) {
@@ -198,6 +195,7 @@ public class TicketDAO implements TicketDAOInterface {
 			System.out.println("Connection Failed! COMMIT");
 			e.printStackTrace();
 		}
+		Loggy.info("ERS DB has been accessed.");
 
 	}
 	
@@ -220,7 +218,6 @@ public class TicketDAO implements TicketDAOInterface {
 			e.printStackTrace();
 		}
 		Loggy.info("ERS Ticket " + x + " has been selected and approved.");
-
 	}
 	public void denyTicket(String x) {
 		Date date= new Date();

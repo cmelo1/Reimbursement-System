@@ -42,12 +42,9 @@ function getTicketInfo() {
 	let xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (xhttp.readyState == 4 && xhttp.status == 200) {
-			var ticketList = JSON.parse(xhttp.responseText); // The response
-																// gets turned
-																// into this
+			var ticketList = JSON.parse(xhttp.responseText); // The response																// gets turned																// into this
 			setTableValues(ticketList); // Call set values function defined
 										// below
-
 		}
 	}
 	// this goes straight to the request helper.
@@ -60,7 +57,12 @@ function getTicketInfo() {
 function setValues(user) {
 	document.getElementById("username").innerHTML = "Hello, " + user.fname;
 }
+function formatMoney(number) {
+	  return number.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+	}
 
+
+//this is the ticketList recieved from the HTTP Request,
 function setTableValues(ticketList) {
 	let rowcount = 10; // 10 items per row
 	html = "";
@@ -107,9 +109,8 @@ function setTableValues(ticketList) {
 			tempResolveDate = "<td> PENDING </td>";
 			resolver = " -";
 		}
-
 		html += "<tr> <td>" + ticketList[i].ticket_Id + "</td>" + "<td>"
-				+ ticketList[i].amount + "</td>" + "<td>" + (date.getMonth()+1)
+				+ formatMoney(ticketList[i].amount) + "</td>" + "<td>" + (date.getMonth()+1)
 				+ "/" + date.getDate() + "/" + date.getFullYear() + "</td>"
 				+ tempResolveDate + "<td>"
 				+ ticketList[i].description + "</td>" + "<td>"
@@ -128,6 +129,8 @@ function setTableValues(ticketList) {
 } // this will manipulate the elements on the next page.
 
 // new function
+
+
 function addRowHandlers(arrayobj) {
 	var table = document.getElementById("tablebody");
 	var rows = table.getElementsByTagName("tr");
@@ -203,7 +206,7 @@ function modalStuff(row) {
 	let date = new Date(row.submit_date);
 	document.getElementById("employeeNameId").innerHTML = "Employee ID: <i>"
 			+ row.author + "</i>";
-	document.getElementById("amountID").innerHTML = "Amount:<i> $" + row.amount;
+	document.getElementById("amountID").innerHTML = "Amount:<i> $" + formatMoney(row.amount);
 	document.getElementById("dateSubmittedId").innerHTML = "Date Submitted: <i> "
 			+ (date.getMonth()+1)
 			+ "/"
@@ -211,8 +214,6 @@ function modalStuff(row) {
 			+ "/"
 			+ date.getFullYear()
 			+ "</i>";
-	//document.getElementById("dateResolvedId").innerHTML = "Date Resolved: <i> "
-	//		+ row.resolve_date + "</i>";
 	document.getElementById("descriptionId").innerHTML = "Description: <i> "
 			+ row.description + "</i>";
 	document.getElementById("receiptID").innerHTML = "Receipt: <i> "
@@ -244,6 +245,8 @@ function modalStuff(row) {
 	// When the user clicks on <span> (x), close the modal
 	approveButton.onclick = function() {
 		approvedSnackbar();
+		
+		
 		approveTicketRequest(row); //HTTP Request
 		
 		modal.style.display = "none";
@@ -267,11 +270,10 @@ function approveTicketRequest(row){
 		}
 	}
 	let id = row.ticket_Id;
-	//this goes straight to the request helper.
-xhttpReq.open("PUT",'http://localhost:8080/ERS_System/HTML/approveTicket.do',true); //Sends the set values 'request' to this.
+	
+xhttpReq.open("PUT",'http://localhost:8080/ERS_System/HTML/approveTicket.do',true); 
 xhttpReq.setRequestHeader("ticketid","x-www-form-urlencoded");
 xhttpReq.send(id);
-
 }
 
 function denyTicketRequest(row){
@@ -287,7 +289,6 @@ function denyTicketRequest(row){
 xhttpReq.open("PUT",'http://localhost:8080/ERS_System/HTML/denyTicket.do',true); //Sends the set values 'request' to this.
 xhttpReq.setRequestHeader("ticketid","x-www-form-urlencoded");
 xhttpReq.send(id);
-
 }
 
 
@@ -341,8 +342,6 @@ function myFunction() {
 	    }
 	  }
 	}
-
-
 
 /**
  * THIS IS THE BEGINNING OF THE SORTABLE/SEARCHABLE TABLE JAVASCRIPT

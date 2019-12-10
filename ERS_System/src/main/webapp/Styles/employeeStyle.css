@@ -8,6 +8,18 @@ html {
 #mainbody {
 }
 
+#topRow{
+	background-color:white !important;
+	
+}
+
+img{
+  max-width: 50%;
+  height: auto;
+  margin-left: 400px;
+  position: center;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   height: 100vh;
@@ -121,7 +133,10 @@ h4 {
 .col-9 {width: 75%;}
 .col-10 {width: 83.33%;}
 .col-11 {width: 91.66%;}
-.col-12 {width: 100%;}
+.col-12 {
+	width: 100%;
+	background-color: white;
+		}
 
 textarea{
   width: 100%;

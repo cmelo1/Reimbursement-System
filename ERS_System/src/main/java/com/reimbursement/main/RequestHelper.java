@@ -5,36 +5,33 @@ import javax.servlet.http.HttpServletResponse;
 
 public class RequestHelper {
 
-	// The idea behind this class is to route requests based on the URI that comes
-	// along with the request.
+
 
 	public static String process(HttpServletRequest request, HttpServletResponse response) {
 
 		switch (request.getRequestURI()) {
-		case "/ERS_System/HTML/index.do": 
+		case "/ERS_System/HTML/index.do":
 			try {
-			return LoginController.login(request);
+				return LoginController.login(request);
+			} catch (NullPointerException e) {
+				return "/HTML/index.html";
 			}
-			catch(NullPointerException e) {
-			return "/HTML/index.html";
-			}
-		case "/ERS_System/HTML/employee.do"://recently changed
-			return EmployeeController.Home(request, response); 
-		case "/ERS_System/HTML/Manager.do":
-			return ManagerController.Home(request,response);
-		case "/ERS_System/HTML/submitTicket.do":
-			//must have an action from a submit button to a form as action="submitTicket.do"
+		case "/ERS_System/HTML/employee.do": //Employee Redirect
+			return EmployeeController.Home(request, response);
+		case "/ERS_System/HTML/Manager.do": //Manager Redirect
+			return ManagerController.Home(request, response);
+		case "/ERS_System/HTML/submitTicket.do": //Ticket Methods
 			return TicketController.submitTicket(request);
 		case "/ERS_System/HTML/displayTickets.do":
-			return TicketController.displayTickets(request,response);
+			return TicketController.displayTickets(request, response);
 		case "/ERS_System/HTML/displayAllTickets.do":
-			return TicketController.displayAllTickets(request,response);
+			return TicketController.displayAllTickets(request, response);
 		case "/ERS_System/HTML/approveTicket.do":
 			return TicketController.approveTicket(request);
 		case "/ERS_System/HTML/denyTicket.do":
 			return TicketController.denyTicket(request);
 		default:
-			
+
 			return "/HTML/index.html";
 		}
 

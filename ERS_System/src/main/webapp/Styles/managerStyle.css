@@ -11,6 +11,22 @@ html {
 #mainbody {
 	background-color: white;
 }
+#topRow{
+	background-color:white !important;
+	max-width: 50%;
+  height: auto;
+
+
+}
+
+#innerDiv{
+	float:left;
+	width:1000px
+}
+.topLogo{
+	 margin-left: 390px; 
+	 
+}
 
 body {
   font-family: "Poppins", sans-serif;
@@ -60,6 +76,8 @@ h2 {
 	background-color: white;
 }
 
+
+
 .topOptions {
 	margin: 10px;
 	position: relative;
@@ -89,7 +107,9 @@ h2 {
 .col-9 {width: 75%;}
 .col-10 {width: 83.33%;}
 .col-11 {width: 91.66%;}
-.col-12 {width: 100%;}
+.col-12 {width: 100%;
+
+}
 
 
 #table1 tr:nth-child(even) {
