@@ -30,16 +30,17 @@ CONSTRAINT FK_USER_ROLE FOREIGN KEY (USER_ROLE_ID) REFERENCES
 ERS_REIMBURSEMENT_ROLES(ERS_USER_ROLE_ID)
 );
 
-
-
 --TRIGGER-- 
--- WE DONT NEED A F!#$@ING trigger, we can just call the sequence on the ERS insert method.
-
-
+CREATE TRIGGER user_id_trig
+ON ERS_USERS
+BEFORE INSERT
+AS
+BEGIN 
+SET ERS_USERID = user_sequence.nextval
+END
+/
 
 --SEQUENCES--
-
-
 
 CREATE SEQUENCE reimb_sequence
 START WITH 10000
